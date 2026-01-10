@@ -1,64 +1,33 @@
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  color: #222;
-  background: #fff;
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: Arial, sans-serif;
 }
 
-/* 상단 바 */
-.topbar {
+nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 24px;
-  box-sizing: border-box;
+  padding: 15px 30px;
+  background: #0d1117;
 }
 
-/* 왼쪽 메뉴 */
-.nav-left a {
-  margin-right: 16px;
+nav a {
+  color: #c9d1d9;
   text-decoration: none;
-  color: #222;
-  font-weight: 500;
+  margin: 0 10px;
 }
 
-.nav-left a:hover {
-  text-decoration: underline;
+section {
+  padding: 100px 30px;
+  max-width: 800px;
+  margin: auto;
 }
 
-/* 오른쪽 아이콘 */
-.nav-right img {
-  width: 20px;
-  height: 20px;
-  margin-left: 12px;
-  opacity: 0.7;
-}
-
-.nav-right img:hover {
-  opacity: 1;
-}
-
-/* 본문 */
-main {
-  max-width: 700px;
-  margin: 100px auto 60px;
-  padding: 0 20px;
-}
-
-h1 {
-  font-size: 32px;
-}
-
-h2 {
-  margin-top: 40px;
-  font-size: 22px;
-}
-
-p, li {
-  line-height: 1.7;
+.hero {
+  text-align: center;
+  padding-top: 150px;
 }
