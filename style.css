@@ -1,21 +1,64 @@
 body {
-  max-width: 700px;
-  margin: 60px auto;
+  margin: 0;
   font-family: system-ui, sans-serif;
-  line-height: 1.7;
   color: #222;
+  background: #fff;
+}
+
+/* 상단 바 */
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  box-sizing: border-box;
+}
+
+/* 왼쪽 메뉴 */
+.nav-left a {
+  margin-right: 16px;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+}
+
+.nav-left a:hover {
+  text-decoration: underline;
+}
+
+/* 오른쪽 아이콘 */
+.nav-right img {
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  opacity: 0.7;
+}
+
+.nav-right img:hover {
+  opacity: 1;
+}
+
+/* 본문 */
+main {
+  max-width: 700px;
+  margin: 100px auto 60px;
+  padding: 0 20px;
 }
 
 h1 {
   font-size: 32px;
-  margin-bottom: 10px;
 }
 
 h2 {
-  font-size: 22px;
   margin-top: 40px;
+  font-size: 22px;
 }
 
 p, li {
-  font-size: 16px;
+  line-height: 1.7;
 }
