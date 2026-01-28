@@ -11,12 +11,15 @@
   <div class="logo">Captain</div>
 
   <div class="menu">
-    <a href="#about">About</a>
-    <a href="#stack">Stack</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-en="About" data-ko="소개">About</a>
+    <a href="#stack" data-en="Stack" data-ko="기술">Stack</a>
+    <a href="#contact" data-en="Contact" data-ko="연락처">Contact</a>
   </div>
 
   <div class="links">
+    <button id="themeToggle">Dark</button>
+    <button id="langToggle">KR</button>
+
     <a href="https://github.com/captain34643875-wq" target="_blank">
       <img src="images/github.png" alt="GitHub" class="icon">
     </a>
@@ -27,43 +30,44 @@
 </nav>
 
 <section class="hero">
-  <h1>Hello, World!</h1>
-  <p>I'm Captain, a student from South Korea.</p>
+  <h1 data-en="Hello, World!" data-ko="안녕하세요!">
+    Hello, World!
+  </h1>
+  <p data-en="I'm Captain, a student from South Korea."
+     data-ko="저는 대한민국의 학생 Captain입니다.">
+    I'm Captain, a student from South Korea.
+  </p>
 </section>
 
 <section id="about">
-  <h2>About</h2>
+  <h2 data-en="About Me" data-ko="자기소개">About Me</h2>
   <ul>
-    <li>📚 Learning entry, python, c</li>
-    <li>🎯 Goal: become best programmer</li>
-    <li>🎲 Fun fact: Nothing lol</li>
+    <li data-en="Learning Entry, Python, C"
+        data-ko="엔트리, 파이썬, C 학습 중">
+        Learning Entry, Python, C
+    </li>
+    <li data-en="Goal: Become a great programmer"
+        data-ko="목표: 훌륭한 프로그래머">
+        Goal: Become a great programmer
+    </li>
+    <li data-en="Fun fact: Nothing lol"
+        data-ko="재미있는 사실: 없음 ㅋㅋ">
+        Fun fact: Nothing lol
+    </li>
   </ul>
 </section>
 
 <section id="stack">
-  <h2>Tech Stack</h2>
-
-  <div class="cards-wrapper">
-    <div class="cards">
-      <div class="card">
-        <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge">
-        <p>Python</p>
-      </div>
-
-      <div class="card">
-        <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge">
-        <p>C</p>
-      </div>
-    </div>
-  </div>
+  <h2 data-en="Tech Stack" data-ko="기술 스택">Tech Stack</h2>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge">
+  <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge">
 </section>
 
-
-
 <section id="contact">
-  <h2>Contact</h2>
+  <h2 data-en="Contact" data-ko="연락처">Contact</h2>
   <p>📧 captain34643875@gmail.com</p>
 </section>
 
+<script src="script.js"></script>
 </body>
 </html>

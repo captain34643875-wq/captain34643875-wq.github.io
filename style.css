@@ -1,117 +1,75 @@
-/* ===== 기본 리셋 ===== */
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
 }
 
 body {
   margin: 0;
   padding-top: 80px;
-  background: #ffffff;
-  color: #161b22;
   font-family: Arial, sans-serif;
-  overflow-x: hidden; /* 가로 스크롤 방지 */
+
+  background: #0d1117;
+  color: #c9d1d9;
+
+  transition: background 0.3s, color 0.3s;
 }
 
-/* ===== NAV ===== */
+/* 라이트 모드 */
+body.light {
+  background: #ffffff;
+  color: #111;
+}
+
+/* NAV */
 nav {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0; /* ⭐ 핵심 수정 */
+  width: 100%;
   padding: 16px 40px;
-
   display: flex;
   align-items: center;
-
-  background: #ffffff;
-  z-index: 1000;
+  background: inherit;
 }
 
-.logo {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-nav a {
-  color: #161b22;
-  text-decoration: none;
-}
-
-/* 메뉴 */
 .menu {
   display: flex;
   gap: 24px;
   margin-left: 40px;
 }
 
-/* 오른쪽 아이콘 */
 .links {
   margin-left: auto;
   display: flex;
   gap: 12px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .icon {
   width: 32px;
   height: 32px;
-  object-fit: contain;
-  transition: transform 0.2s ease;
 }
 
-.icon:hover {
-  transform: scale(1.2);
-}
-
-/* ===== 섹션 ===== */
 section {
-  padding: 100px 30px;
   max-width: 800px;
   margin: auto;
+  padding: 100px 30px;
 }
 
 .hero {
   text-align: center;
-  padding-top: 150px;
-}
-
-/* ===== 카드 ===== */
-.cards-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.cards {
-  display: flex;
-  gap: 20px;
-}
-
-.card {
-  background-color: #161b22;
-  color: #c9d1d9;
-  border-radius: 8px;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.nav-inner {
-  max-width: 800px;
-  margin: 0 auto;
-
-  width: 100%;
-  display: flex;
-  align-items: center;
 }
