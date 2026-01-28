@@ -1,8 +1,8 @@
 const themeBtn = document.getElementById("themeToggle");
 const langBtn = document.getElementById("langToggle");
 
-let isDark = false;
-let isKorean = true;
+let isDark = true;
+let isKorean = false;
 
 /* 다크 / 라이트 */
 themeBtn.addEventListener("click", () => {
