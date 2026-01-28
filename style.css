@@ -71,5 +71,12 @@ nav {
   display: flex;
   gap: 12px;
 }
-
+.icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+.icon:hover {
+  transform: scale(1.2);
+}
 
