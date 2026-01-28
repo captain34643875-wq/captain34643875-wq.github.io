@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   background: #0d1117;
   color: #c9d1d9;
@@ -30,4 +30,54 @@ section {
 .hero {
   text-align: center;
   padding-top: 150px;
+} */
+
+/* 전체 부드러운 스크롤 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 기본 설정 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* 네비게이션 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #111;
+    padding: 15px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #00ff99;
+}
+
+/* 섹션 */
+.section {
+    height: 100vh;
+    padding-top: 80px; /* nav 가림 방지 */
+    text-align: center;
+}
+
+/* 아이콘 */
+.icons img {
+    width: 80px;
+    margin: 20px;
+    transition: transform 0.2s;
+}
+
+.icons img:hover {
+    transform: scale(1.1);
 }
