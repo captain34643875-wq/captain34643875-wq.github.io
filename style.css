@@ -1,4 +1,4 @@
-/* ===== 기본 리셋 ===== */
+/* ===== 기본 ===== */
 * {
   box-sizing: border-box;
 }
@@ -11,19 +11,9 @@ html {
 body {
   margin: 0;
   padding-top: 80px;
-  font-family: Arial, sans-serif;
-
-  /* 기본 = 다크 모드 */
   background: #0d1117;
   color: #c9d1d9;
-
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* ===== 라이트 모드 ===== */
-body.light {
-  background: #f5f7fa;
-  color: #111;
+  font-family: Arial, sans-serif;
 }
 
 /* ===== NAV ===== */
@@ -32,63 +22,48 @@ nav {
   top: 0;
   width: 100%;
   padding: 16px 40px;
-
   display: flex;
   align-items: center;
-
+  gap: 24px;
   background: #0b0f14;
   z-index: 1000;
-
-  transition: background 0.3s ease;
 }
 
-/* 라이트 모드 nav */
-body.light nav {
-  background: #ffffff;
-}
-
-/* ===== 로고 ===== */
 .logo {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
 
-/* ===== 메뉴 ===== */
 .menu {
   display: flex;
   gap: 24px;
-  margin-left: 40px;
 }
 
-nav a {
-  color: inherit;
+.menu a {
   text-decoration: none;
-  font-weight: 500;
+  color: inherit;
 }
 
-/* ===== 오른쪽 영역 ===== */
-.links {
+.actions {
   margin-left: auto;
   display: flex;
-  align-items: center;
+  gap: 8px;
+}
+
+.actions button {
+  background: transparent;
+  border: 1px solid #444;
+  color: inherit;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.links {
+  display: flex;
   gap: 12px;
 }
 
-/* 토글 버튼 */
-.links button {
-  background: transparent;
-  border: 1px solid currentColor;
-  color: inherit;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.links button:hover {
-  opacity: 0.8;
-}
-
-/* ===== 아이콘 ===== */
 .icon {
   width: 32px;
   height: 32px;
@@ -112,16 +87,40 @@ section {
   padding-top: 150px;
 }
 
-/* ===== 리스트 ===== */
-ul {
-  padding-left: 20px;
+/* ===== 카드 ===== */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* ===== 라이트 모드 텍스트 보정 ===== */
-body.light a {
+.card {
+  background: #161b22;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* ===== 라이트 모드 ===== */
+body.light {
+  background: #f5f7fa;
   color: #111;
 }
 
-body.light .links button {
-  border-color: #111;
+body.light nav {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+body.light .card {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
