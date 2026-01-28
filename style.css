@@ -7,23 +7,23 @@ html {
   scrollbar-gutter: stable;
 }
 
-/* ===== 라이트 모드 ===== */
+/* ===== 라이트 ===== */
 body {
   margin: 0;
   padding-top: 80px;
   background: #f5f7fa;
   color: #111;
   font-family: Arial, sans-serif;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-/* ===== 다크 모드 ===== */
+/* ===== 다크 ===== */
 body.dark {
   background: #0d1117;
   color: #c9d1d9;
 }
 
-/* NAV */
+/* ===== NAV ===== */
 nav {
   position: fixed;
   top: 0;
@@ -33,7 +33,7 @@ nav {
   align-items: center;
   background: #ffffff;
   z-index: 1000;
-  transition: background 0.3s ease;
+  transition: background 0.25s ease;
 }
 
 body.dark nav {
@@ -57,23 +57,34 @@ nav a {
   font-weight: 500;
 }
 
+/* ===== 버튼 (심플 & 세련) ===== */
 .links {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .toggle-btn {
-  padding: 6px 12px;
-  border: 1px solid #888;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
   background: transparent;
   color: inherit;
+  font-size: 13px;
   cursor: pointer;
-  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-/* 아이콘 */
+.toggle-btn:hover {
+  background: rgba(0,0,0,0.08);
+}
+
+body.dark .toggle-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ===== 아이콘 ===== */
 .icon {
   width: 32px;
   height: 32px;
@@ -82,10 +93,10 @@ nav a {
 }
 
 .icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
-/* 섹션 */
+/* ===== 섹션 ===== */
 section {
   padding: 100px 30px;
   max-width: 900px;
@@ -97,7 +108,7 @@ section {
   padding-top: 120px;
 }
 
-/* ===== Tech Stack 카드 ===== */
+/* ===== 카드 ===== */
 .cards {
   display: flex;
   justify-content: center;
