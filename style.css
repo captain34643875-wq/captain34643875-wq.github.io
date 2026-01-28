@@ -1,4 +1,4 @@
-/* 기본 리셋 */
+/* ===== 기본 리셋 ===== */
 * {
   box-sizing: border-box;
 }
@@ -11,29 +11,35 @@ html {
 body {
   margin: 0;
   padding-top: 80px;
-  background: #c9d1d9 /* #0d1117 */;
-  color: #c9d1d9;
+  background: #c9d1d9;
+  color: #161b22;
   font-family: Arial, sans-serif;
+  overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 
-/* NAV */
+/* ===== NAV ===== */
 nav {
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0; /* ⭐ 핵심 수정 */
   padding: 16px 40px;
 
   display: flex;
   align-items: center;
 
-  background: #c9d1d9 /* #0b0f14 */;
+  background: #c9d1d9;
   z-index: 1000;
 }
 
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 nav a {
-  color: #c9d1d9;
+  color: #161b22;
   text-decoration: none;
-  margin: 0 10px;
 }
 
 /* 메뉴 */
@@ -61,7 +67,7 @@ nav a {
   transform: scale(1.2);
 }
 
-/* 섹션 */
+/* ===== 섹션 ===== */
 section {
   padding: 100px 30px;
   max-width: 800px;
@@ -72,23 +78,31 @@ section {
   text-align: center;
   padding-top: 150px;
 }
-.container {
+
+/* ===== 카드 ===== */
+.cards-wrapper {
   width: 100%;
-  box-sizing: border-box;
-}
-* {
-  box-sizing: border-box;
-}
-.cards {
   display: flex;
   justify-content: center;
+}
+
+.cards {
+  display: flex;
   gap: 20px;
 }
+
 .card {
   background-color: #161b22;
+  color: #c9d1d9;
   border-radius: 8px;
   padding: 20px;
   width: 200px;
   text-align: center;
+
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
