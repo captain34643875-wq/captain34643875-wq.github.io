@@ -72,3 +72,23 @@ section {
   text-align: center;
   padding-top: 150px;
 }
+.container {
+  width: 100%;
+  box-sizing: border-box;
+}
+* {
+  box-sizing: border-box;
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.card {
+  background-color: #161b22;
+  border-radius: 8px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
