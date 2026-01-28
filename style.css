@@ -1,4 +1,3 @@
-/* 기본 리셋 */
 * {
   box-sizing: border-box;
 }
@@ -8,7 +7,7 @@ html {
   scrollbar-gutter: stable;
 }
 
-/* ===== 기본(라이트 모드) ===== */
+/* ===== 라이트 모드 ===== */
 body {
   margin: 0;
   padding-top: 80px;
@@ -46,7 +45,6 @@ body.dark nav {
   font-size: 18px;
 }
 
-/* 메뉴 */
 .menu {
   display: flex;
   gap: 24px;
@@ -59,7 +57,6 @@ nav a {
   font-weight: 500;
 }
 
-/* 오른쪽 */
 .links {
   margin-left: auto;
   display: flex;
