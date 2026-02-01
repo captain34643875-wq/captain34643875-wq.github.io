@@ -1,0 +1,623 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+/* ===== 라이트 ===== */
+body {
+  margin: 0;
+  padding-top: 80px;
+  background: #f5f7fa;
+  color: #111;
+  font-family: Arial, sans-serif;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* ===== 다크 ===== */
+body.dark {
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  z-index: 1000;
+  transition: background 0.25s ease;
+}
+
+body.dark nav {
+  background: #0b0f14;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.menu {
+  display: flex;
+  gap: 24px;
+  margin-left: 40px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+/* ===== 버튼 ===== */
+.links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: rgba(0,0,0,0.08);
+}
+
+body.dark .toggle-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ===== 아이콘 ===== */
+.icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* ===== 섹션 ===== */
+section {
+  padding: 80px 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ===== 도구 버튼 ===== */
+.tool-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+  color: #111;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+body.dark .tool-btn {
+  background: #161b22;
+  color: #c9d1d9;
+  border-color: #30363d;
+}
+
+.tool-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+body.dark .tool-btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.tool-btn.primary {
+  background: #0969da;
+  color: white;
+  border-color: #0969da;
+}
+
+body.dark .tool-btn.primary {
+  background: #1f6feb;
+  border-color: #1f6feb;
+}
+
+/* ===== 입력 필드 ===== */
+.input-field {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+  color: #111;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s ease;
+}
+
+body.dark .input-field {
+  background: #161b22;
+  color: #c9d1d9;
+  border-color: #30363d;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+}
+
+body.dark .input-field:focus {
+  border-color: #1f6feb;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.1);
+}
+
+textarea.input-field {
+  resize: vertical;
+  font-family: 'Courier New', monospace;
+}
+
+/* ===== 입력 그룹 ===== */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* ===== 정렬 알고리즘 시각화 ===== */
+.tool-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.speed-control input[type="range"] {
+  width: 120px;
+}
+
+.array-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 400px;
+  background: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+body.dark .array-container {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+.bar {
+  width: 30px;
+  margin: 0 2px;
+  background: linear-gradient(180deg, #0969da, #0550ae);
+  border-radius: 4px 4px 0 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(9, 105, 218, 0.2);
+}
+
+body.dark .bar {
+  background: linear-gradient(180deg, #1f6feb, #1158c7);
+}
+
+.bar.comparing {
+  background: linear-gradient(180deg, #d29922, #b37e1a);
+}
+
+.bar.swapping {
+  background: linear-gradient(180deg, #cf222e, #a40e26);
+  transform: scale(1.1);
+}
+
+.bar.sorted {
+  background: linear-gradient(180deg, #1a7f37, #116329);
+}
+
+/* ===== 코드 에디터 ===== */
+.editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.editor-panel {
+  background: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+body.dark .editor-panel {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+.panel-header {
+  background: #f6f8fa;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+body.dark .panel-header {
+  background: #0d1117;
+  border-color: #30363d;
+}
+
+.editor-tabs {
+  display: flex;
+  gap: 5px;
+}
+
+.editor-tab {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+  color: #111;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+body.dark .editor-tab {
+  background: #161b22;
+  color: #c9d1d9;
+  border-color: #30363d;
+}
+
+.editor-tab.active {
+  background: #0969da;
+  color: white;
+  border-color: #0969da;
+}
+
+body.dark .editor-tab.active {
+  background: #1f6feb;
+  border-color: #1f6feb;
+}
+
+.code-editor {
+  width: 100%;
+  height: 400px;
+  padding: 16px;
+  background: #ffffff;
+  border: none;
+  resize: vertical;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #111;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+body.dark .code-editor {
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+.preview-frame {
+  width: 100%;
+  height: 400px;
+  background: white;
+  border: none;
+}
+
+/* ===== 정규표현식 테스터 ===== */
+.checkbox-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.result-box {
+  background: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 200px;
+  margin-top: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+body.dark .result-box {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+.placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+.match-item {
+  background: #f6f8fa;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-left: 3px solid #1a7f37;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+}
+
+body.dark .match-item {
+  background: #0d1117;
+}
+
+.match-highlight {
+  background: rgba(9, 105, 218, 0.2);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+body.dark .match-highlight {
+  background: rgba(31, 111, 235, 0.3);
+}
+
+/* ===== 진법 변환기 ===== */
+.converter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.base-card {
+  background: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+body.dark .base-card {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+.base-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+body.dark .base-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.base-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #0969da;
+}
+
+body.dark .base-label {
+  color: #58a6ff;
+}
+
+/* ===== ASCII 테이블 ===== */
+.ascii-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.ascii-controls .input-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.ascii-table-wrapper {
+  background: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  overflow: auto;
+  max-height: 600px;
+  transition: all 0.25s ease;
+}
+
+body.dark .ascii-table-wrapper {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+body.dark th,
+body.dark td {
+  border-color: #30363d;
+}
+
+th {
+  background: #f6f8fa;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  color: #0969da;
+}
+
+body.dark th {
+  background: #0d1117;
+  color: #58a6ff;
+}
+
+tr:hover {
+  background: #f6f8fa;
+}
+
+body.dark tr:hover {
+  background: #0d1117;
+}
+
+.char-display {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: #0969da;
+}
+
+body.dark .char-display {
+  color: #58a6ff;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+  nav {
+    padding: 12px 20px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .menu {
+    margin-left: 20px;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .links {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+  .hero {
+    padding-top: 80px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .editor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .converter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tool-controls > * {
+    width: 100%;
+  }
+
+  .ascii-controls {
+    flex-direction: column;
+  }
+
+  .array-container {
+    height: 300px;
+    padding: 1rem;
+  }
+
+  .bar {
+    width: 20px;
+    margin: 0 1px;
+  }
+}

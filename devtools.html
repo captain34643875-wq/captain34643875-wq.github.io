@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>DevTools - Captain</title>
+  <link rel="stylesheet" href="devtools-style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Captain</div>
+
+  <div class="menu">
+    <a href="index.html" data-ko="홈" data-en="Home">홈</a>
+    <a href="#sorting" data-ko="도구" data-en="Tools">도구</a>
+  </div>
+
+  <div class="links">
+    <button id="themeToggle" class="toggle-btn">Dark</button>
+    <button id="langToggle" class="toggle-btn">EN</button>
+
+    <a href="https://github.com/captain34643875-wq" target="_blank" class="icon-link" title="GitHub">
+      <img src="images/github.png" class="icon" alt="GitHub" onerror="this.style.display='none'; this.parentElement.innerHTML='GH';">
+    </a>
+    <a href="https://naver.me/GeWKLVMd" target="_blank" class="icon-link" title="Entry">
+      <img src="images/entry.png" class="icon" alt="Entry" onerror="this.style.display='none'; this.parentElement.innerHTML='EN';">
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1 data-ko="개발자 도구 모음" data-en="Developer Tools">개발자 도구 모음</h1>
+  <p data-ko="코딩 학습을 위한 유용한 도구들" data-en="Useful tools for coding practice">
+     코딩 학습을 위한 유용한 도구들
+  </p>
+</section>
+
+<!-- Sorting Algorithm Visualizer -->
+<section id="sorting">
+  <h2 data-ko="정렬 알고리즘 시각화" data-en="Sorting Algorithm Visualizer">정렬 알고리즘 시각화</h2>
+  
+  <div class="tool-controls">
+    <select id="algorithm" class="input-field">
+      <option value="bubble" data-ko="버블 정렬" data-en="Bubble Sort">버블 정렬</option>
+      <option value="selection" data-ko="선택 정렬" data-en="Selection Sort">선택 정렬</option>
+      <option value="insertion" data-ko="삽입 정렬" data-en="Insertion Sort">삽입 정렬</option>
+      <option value="quick" data-ko="퀵 정렬" data-en="Quick Sort">퀵 정렬</option>
+    </select>
+    <button onclick="generateArray()" class="tool-btn" data-ko="새 배열" data-en="New Array">새 배열</button>
+    <button onclick="startSort()" class="tool-btn primary" data-ko="시작" data-en="Start">시작</button>
+    <button onclick="resetArray()" class="tool-btn" data-ko="초기화" data-en="Reset">초기화</button>
+    <div class="speed-control">
+      <label data-ko="속도:" data-en="Speed:">속도:</label>
+      <input type="range" id="speed" min="1" max="100" value="50">
+    </div>
+  </div>
+  
+  <div class="array-container" id="arrayContainer"></div>
+</section>
+
+<!-- Code Editor -->
+<section id="editor">
+  <h2 data-ko="코드 에디터" data-en="Code Editor">코드 에디터</h2>
+  
+  <div class="editor-grid">
+    <div class="editor-panel">
+      <div class="panel-header">
+        <span data-ko="코드 작성" data-en="Write Code">코드 작성</span>
+        <div class="editor-tabs">
+          <button class="editor-tab active" data-lang="html">HTML</button>
+          <button class="editor-tab" data-lang="css">CSS</button>
+          <button class="editor-tab" data-lang="js">JS</button>
+        </div>
+      </div>
+      <textarea class="code-editor active" id="htmlEditor" placeholder="HTML 코드를 입력하세요..."><!DOCTYPE html>
+<html>
+<head>
+    <title>미리보기</title>
+</head>
+<body>
+    <h1>안녕하세요!</h1>
+    <p>여기에 HTML을 작성하세요.</p>
+</body>
+</html></textarea>
+      <textarea class="code-editor" id="cssEditor" placeholder="CSS 코드를 입력하세요..." style="display:none;">body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}</textarea>
+      <textarea class="code-editor" id="jsEditor" placeholder="JavaScript 코드를 입력하세요..." style="display:none;">console.log('Hello, World!');
+
+// 여기에 JavaScript를 작성하세요</textarea>
+    </div>
+    
+    <div class="editor-panel">
+      <div class="panel-header">
+        <span data-ko="미리보기" data-en="Preview">미리보기</span>
+        <button onclick="runCode()" class="tool-btn primary" data-ko="실행 (Ctrl+Enter)" data-en="Run (Ctrl+Enter)">실행 (Ctrl+Enter)</button>
+      </div>
+      <iframe class="preview-frame" id="preview"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Regex Tester -->
+<section id="regex">
+  <h2 data-ko="정규표현식 테스터" data-en="Regex Tester">정규표현식 테스터</h2>
+  
+  <div class="input-group">
+    <label data-ko="정규표현식 패턴" data-en="Regex Pattern">정규표현식 패턴</label>
+    <input type="text" id="regexPattern" class="input-field" placeholder="\d{3}-\d{4}" value="\d+">
+  </div>
+  
+  <div class="input-group">
+    <label data-ko="플래그" data-en="Flags">플래그</label>
+    <div class="checkbox-group">
+      <label class="checkbox-label">
+        <input type="checkbox" id="flagG" checked> g <span data-ko="(전역)" data-en="(global)">(전역)</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="flagI"> i <span data-ko="(대소문자 무시)" data-en="(ignore case)">(대소문자 무시)</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="flagM"> m <span data-ko="(여러 줄)" data-en="(multiline)">(여러 줄)</span>
+      </label>
+    </div>
+  </div>
+  
+  <div class="input-group">
+    <label data-ko="테스트 문자열" data-en="Test String">테스트 문자열</label>
+    <textarea id="testString" class="input-field" rows="5" placeholder="테스트할 문자열...">전화번호: 010-1234-5678
+이메일: test@example.com
+숫자: 12345</textarea>
+  </div>
+  
+  <button onclick="testRegex()" class="tool-btn primary" data-ko="테스트 실행" data-en="Run Test">테스트 실행</button>
+  
+  <div class="result-box" id="regexMatches">
+    <p class="placeholder" data-ko="매칭 결과가 여기에 표시됩니다..." data-en="Match results will appear here...">매칭 결과가 여기에 표시됩니다...</p>
+  </div>
+</section>
+
+<!-- Base Converter -->
+<section id="converter">
+  <h2 data-ko="진법 변환기" data-en="Base Converter">진법 변환기</h2>
+  
+  <div class="converter-grid">
+    <div class="base-card">
+      <label class="base-label" data-ko="10진수 (Decimal)" data-en="Decimal">10진수 (Decimal)</label>
+      <input type="text" id="decimal" class="input-field" placeholder="0" oninput="convertFrom(10)">
+    </div>
+    <div class="base-card">
+      <label class="base-label" data-ko="2진수 (Binary)" data-en="Binary">2진수 (Binary)</label>
+      <input type="text" id="binary" class="input-field" placeholder="0" oninput="convertFrom(2)">
+    </div>
+    <div class="base-card">
+      <label class="base-label" data-ko="8진수 (Octal)" data-en="Octal">8진수 (Octal)</label>
+      <input type="text" id="octal" class="input-field" placeholder="0" oninput="convertFrom(8)">
+    </div>
+    <div class="base-card">
+      <label class="base-label" data-ko="16진수 (Hexadecimal)" data-en="Hexadecimal">16진수 (Hexadecimal)</label>
+      <input type="text" id="hexadecimal" class="input-field" placeholder="0" oninput="convertFrom(16)">
+    </div>
+  </div>
+</section>
+
+<!-- ASCII Table -->
+<section id="ascii">
+  <h2 data-ko="ASCII / 유니코드 테이블" data-en="ASCII / Unicode Table">ASCII / 유니코드 테이블</h2>
+  
+  <div class="ascii-controls">
+    <input type="text" id="searchChar" class="input-field" placeholder="문자 검색..." oninput="searchASCII()">
+    <select id="charRange" class="input-field" onchange="generateASCIITable()">
+      <option value="basic" data-ko="기본 ASCII (0-127)" data-en="Basic ASCII (0-127)">기본 ASCII (0-127)</option>
+      <option value="extended" data-ko="확장 ASCII (0-255)" data-en="Extended ASCII (0-255)">확장 ASCII (0-255)</option>
+      <option value="korean" data-ko="한글 (가-힣)" data-en="Korean (가-힣)">한글 (가-힣)</option>
+    </select>
+  </div>
+  
+  <div class="ascii-table-wrapper" id="asciiTableContainer"></div>
+</section>
+
+<script src="devtools-script.js"></script>
+</body>
+</html>
