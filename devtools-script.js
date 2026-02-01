@@ -106,7 +106,7 @@ function updateDescription() {
 
 function generateArray() {
   const size = 30;
-  array = Array.from({length: size}, () => Math.floor(Math.random() * 350) + 50);
+  array = Array.from({length: size}, () => Math.floor(Math.random() * 320) + 30);
   displayArray();
 }
 
