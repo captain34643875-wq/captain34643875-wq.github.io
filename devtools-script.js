@@ -27,11 +27,82 @@ langBtn.addEventListener("click", () => {
       el.innerHTML = newText;
     }
   });
+  
+  // 정렬 알고리즘 설명 업데이트
+  if (typeof updateDescription === 'function') {
+    updateDescription();
+  }
 });
 
 // ===== 정렬 알고리즘 =====
 let array = [];
 let sorting = false;
+
+const algorithmDescriptions = {
+  bubble: {
+    ko: {
+      title: "💡 버블 정렬 (Bubble Sort)",
+      description: "인접한 두 원소를 비교하여 큰 값을 뒤로 보냅니다. 마치 거품이 위로 올라오듯 가장 큰 값이 맨 뒤로 이동합니다.",
+      complexity: ["⏱️ 시간 복잡도: O(n²)", "📦 공간 복잡도: O(1)", "✅ 안정 정렬"]
+    },
+    en: {
+      title: "💡 Bubble Sort",
+      description: "Compares adjacent elements and moves larger values backward, like bubbles rising to the surface.",
+      complexity: ["⏱️ Time Complexity: O(n²)", "📦 Space Complexity: O(1)", "✅ Stable Sort"]
+    }
+  },
+  selection: {
+    ko: {
+      title: "💡 선택 정렬 (Selection Sort)",
+      description: "매 단계마다 가장 작은 원소를 찾아서 앞으로 보냅니다. 정렬되지 않은 부분에서 최솟값을 선택하는 방식입니다.",
+      complexity: ["⏱️ 시간 복잡도: O(n²)", "📦 공간 복잡도: O(1)", "❌ 불안정 정렬"]
+    },
+    en: {
+      title: "💡 Selection Sort",
+      description: "Finds the smallest element in each step and moves it to the front.",
+      complexity: ["⏱️ Time Complexity: O(n²)", "📦 Space Complexity: O(1)", "❌ Unstable Sort"]
+    }
+  },
+  insertion: {
+    ko: {
+      title: "💡 삽입 정렬 (Insertion Sort)",
+      description: "카드를 정렬하듯이 각 원소를 이미 정렬된 부분의 적절한 위치에 삽입합니다. 거의 정렬된 데이터에 효율적입니다.",
+      complexity: ["⏱️ 시간 복잡도: O(n²)", "📦 공간 복잡도: O(1)", "✅ 안정 정렬"]
+    },
+    en: {
+      title: "💡 Insertion Sort",
+      description: "Like sorting cards, inserts each element into its proper position in the sorted portion.",
+      complexity: ["⏱️ Time Complexity: O(n²)", "📦 Space Complexity: O(1)", "✅ Stable Sort"]
+    }
+  },
+  quick: {
+    ko: {
+      title: "💡 퀵 정렬 (Quick Sort)",
+      description: "기준값(pivot)을 선택하여 작은 값은 왼쪽, 큰 값은 오른쪽으로 분할하며 정렬합니다. 가장 빠른 정렬 알고리즘 중 하나입니다.",
+      complexity: ["⏱️ 평균: O(n log n)", "⏱️ 최악: O(n²)", "📦 공간 복잡도: O(log n)", "❌ 불안정 정렬"]
+    },
+    en: {
+      title: "💡 Quick Sort",
+      description: "Selects a pivot and partitions values into smaller (left) and larger (right) groups. One of the fastest sorting algorithms.",
+      complexity: ["⏱️ Average: O(n log n)", "⏱️ Worst: O(n²)", "📦 Space Complexity: O(log n)", "❌ Unstable Sort"]
+    }
+  }
+};
+
+function updateDescription() {
+  const algorithm = document.getElementById('algorithm').value;
+  const lang = isKorean ? 'ko' : 'en';
+  const desc = algorithmDescriptions[algorithm][lang];
+  
+  const container = document.getElementById('algorithmDescription');
+  container.innerHTML = `
+    <h3>${desc.title}</h3>
+    <p>${desc.description}</p>
+    <ul>
+      ${desc.complexity.map(item => `<li>${item}</li>`).join('')}
+    </ul>
+  `;
+}
 
 function generateArray() {
   const size = 30;

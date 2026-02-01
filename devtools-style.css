@@ -34,6 +34,7 @@ nav {
   background: #ffffff;
   z-index: 1000;
   transition: background 0.25s ease;
+  flex-wrap: nowrap;
 }
 
 body.dark nav {
@@ -49,7 +50,8 @@ body.dark nav {
   display: flex;
   gap: 24px;
   margin-left: 40px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 nav a {
@@ -69,6 +71,7 @@ nav a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .toggle-btn {
@@ -246,6 +249,50 @@ textarea.input-field {
   width: 120px;
 }
 
+.algorithm-description {
+  background: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.25s ease;
+}
+
+body.dark .algorithm-description {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+.algorithm-description h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #0969da;
+  font-size: 1.2rem;
+}
+
+body.dark .algorithm-description h3 {
+  color: #58a6ff;
+}
+
+.algorithm-description p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.algorithm-description ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.algorithm-description li {
+  font-size: 0.95rem;
+  font-family: 'Courier New', monospace;
+}
+
 .array-container {
   display: flex;
   align-items: flex-end;
@@ -256,11 +303,46 @@ textarea.input-field {
   border-radius: 12px;
   padding: 2rem;
   transition: background 0.25s ease, border-color 0.25s ease;
+  margin-bottom: 1rem;
 }
 
 body.dark .array-container {
   background: #161b22;
   border-color: #30363d;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.legend-box.comparing {
+  background: linear-gradient(180deg, #d29922, #b37e1a);
+}
+
+.legend-box.swapping {
+  background: linear-gradient(180deg, #cf222e, #a40e26);
+}
+
+.legend-box.sorted {
+  background: linear-gradient(180deg, #1a7f37, #116329);
 }
 
 .bar {

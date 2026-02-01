@@ -40,7 +40,7 @@
   <h2 data-ko="정렬 알고리즘 시각화" data-en="Sorting Algorithm Visualizer">정렬 알고리즘 시각화</h2>
   
   <div class="tool-controls">
-    <select id="algorithm" class="input-field">
+    <select id="algorithm" class="input-field" onchange="updateDescription()">
       <option value="bubble" data-ko="버블 정렬" data-en="Bubble Sort">버블 정렬</option>
       <option value="selection" data-ko="선택 정렬" data-en="Selection Sort">선택 정렬</option>
       <option value="insertion" data-ko="삽입 정렬" data-en="Insertion Sort">삽입 정렬</option>
@@ -54,8 +54,27 @@
       <input type="range" id="speed" min="1" max="100" value="50">
     </div>
   </div>
+
+  <div class="algorithm-description" id="algorithmDescription">
+    <h3 data-ko="💡 버블 정렬 (Bubble Sort)" data-en="💡 Bubble Sort">💡 버블 정렬 (Bubble Sort)</h3>
+    <p data-ko="인접한 두 원소를 비교하여 큰 값을 뒤로 보냅니다. 마치 거품이 위로 올라오듯 가장 큰 값이 맨 뒤로 이동합니다." 
+       data-en="Compares adjacent elements and moves larger values backward, like bubbles rising to the surface.">
+       인접한 두 원소를 비교하여 큰 값을 뒤로 보냅니다. 마치 거품이 위로 올라오듯 가장 큰 값이 맨 뒤로 이동합니다.
+    </p>
+    <ul>
+      <li data-ko="⏱️ 시간 복잡도: O(n²)" data-en="⏱️ Time Complexity: O(n²)">⏱️ 시간 복잡도: O(n²)</li>
+      <li data-ko="📦 공간 복잡도: O(1)" data-en="📦 Space Complexity: O(1)">📦 공간 복잡도: O(1)</li>
+      <li data-ko="✅ 안정 정렬" data-en="✅ Stable Sort">✅ 안정 정렬</li>
+    </ul>
+  </div>
   
   <div class="array-container" id="arrayContainer"></div>
+  
+  <div class="legend">
+    <span class="legend-item"><span class="legend-box comparing"></span><span data-ko="비교 중" data-en="Comparing">비교 중</span></span>
+    <span class="legend-item"><span class="legend-box swapping"></span><span data-ko="교환 중" data-en="Swapping">교환 중</span></span>
+    <span class="legend-item"><span class="legend-box sorted"></span><span data-ko="정렬 완료" data-en="Sorted">정렬 완료</span></span>
+  </div>
 </section>
 
 <!-- Code Editor -->
