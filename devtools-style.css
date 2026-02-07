@@ -480,33 +480,37 @@ body.dark .code-editor {
   border: none;
 }
 
-/* ===== 도구 디렉토리 ===== */
-.tool-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+/* ===== 도구 디렉토리 (기술 스택 카드 스타일) ===== */
+.tool-directory-desc {
+  text-align: center;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.tool-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .tool-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 1.25rem 1rem;
+  display: block;
+  width: 260px;
+  padding: 1.5rem;
   background: #ffffff;
   border: 2px solid #ddd;
   border-radius: 12px;
   color: inherit;
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
 }
 
 .tool-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   border-color: #0969da;
 }
 
@@ -517,11 +521,42 @@ body.dark .tool-card {
 
 body.dark .tool-card:hover {
   border-color: #1f6feb;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
-.tool-icon {
-  font-size: 1.8rem;
+.tool-card .tool-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.tool-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #0969da;
+}
+
+body.dark .tool-card h3 {
+  color: #58a6ff;
+}
+
+.tool-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.tool-card .tool-arrow {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.tool-card:hover .tool-arrow {
+  opacity: 1;
 }
 
 /* ===== JSON 포맷터 ===== */
@@ -834,8 +869,10 @@ body.dark .char-display {
     grid-template-columns: 1fr;
   }
 
-  .tool-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .tool-card {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
   }
 
   .converter-grid {

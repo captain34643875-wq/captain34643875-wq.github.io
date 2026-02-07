@@ -31,7 +31,9 @@ window.addEventListener("DOMContentLoaded", () => {
         el.tagName === "BUTTON" ||
         el.tagName === "OPTION" ||
         el.tagName === "SPAN" ||
-        el.tagName === "LABEL"
+        el.tagName === "LABEL" ||
+        el.tagName === "H3" ||
+        el.tagName === "P"
       ) {
         el.textContent = newText;
       } else {
