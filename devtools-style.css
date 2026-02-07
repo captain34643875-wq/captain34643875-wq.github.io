@@ -457,6 +457,22 @@ body.dark .code-editor {
   color: #c9d1d9;
 }
 
+/* 에디터 본문 영역 - 하단 흰 영역 방지 */
+.editor-body {
+  height: 400px;
+  overflow: hidden;
+}
+
+/* CodeMirror 하단 깨짐 방지 - 높이 고정 */
+.editor-body .CodeMirror {
+  height: 400px !important;
+}
+
+.editor-body .CodeMirror-scroll {
+  min-height: 400px !important;
+  max-height: 400px !important;
+}
+
 .preview-frame {
   width: 100%;
   height: 400px;

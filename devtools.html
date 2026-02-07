@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
@@ -100,6 +103,7 @@
           <button class="editor-tab" data-lang="js">JS</button>
         </div>
       </div>
+      <div class="editor-body">
       <textarea class="code-editor active" id="htmlEditor" placeholder="HTML 코드를 입력하세요..."><!DOCTYPE html>
 <html>
 <head>
@@ -119,6 +123,7 @@
       <textarea class="code-editor" id="jsEditor" placeholder="JavaScript 코드를 입력하세요..." style="display:none;">console.log('Hello, World!');
 
 // 여기에 JavaScript를 작성하세요</textarea>
+      </div>
     </div>
     
     <div class="editor-panel">

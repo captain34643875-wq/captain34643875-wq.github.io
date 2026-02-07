@@ -89,7 +89,9 @@ window.addEventListener("DOMContentLoaded", () => {
       tab.classList.add("active");
       const lang = tab.dataset.lang;
       Object.entries(editors).forEach(([k, cm]) => {
-        cm.getWrapperElement().style.display = k === lang ? "" : "none";
+        const show = k === lang;
+        cm.getWrapperElement().style.display = show ? "" : "none";
+        if (show) setTimeout(() => cm.refresh(), 0);
       });
     });
   });
