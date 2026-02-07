@@ -107,6 +107,9 @@ window.addEventListener("DOMContentLoaded", () => {
   generateArray();
   runCode();
   generateASCIITable();
+  convertColor("hex");
+  updateMarkdownPreview();
+  document.getElementById("markdownInput").addEventListener("input", updateMarkdownPreview);
 });
 
 
@@ -431,4 +434,87 @@ function generateASCIITable() {
 
 function searchASCII() {
   generateASCIITable();
+}
+
+
+// ===== JSON 포맷터 =====
+function formatJSON() {
+  const input = document.getElementById("jsonInput").value;
+  const output = document.getElementById("jsonOutput");
+  try {
+    const parsed = JSON.parse(input);
+    output.value = JSON.stringify(parsed, null, 2);
+    output.style.color = "";
+  } catch (e) {
+    output.value = "❌ 오류: " + e.message;
+    output.style.color = "#cf222e";
+  }
+}
+
+function minifyJSON() {
+  const input = document.getElementById("jsonInput").value;
+  const output = document.getElementById("jsonOutput");
+  try {
+    const parsed = JSON.parse(input);
+    output.value = JSON.stringify(parsed);
+    output.style.color = "";
+  } catch (e) {
+    output.value = "❌ 오류: " + e.message;
+    output.style.color = "#cf222e";
+  }
+}
+
+function validateJSON() {
+  const input = document.getElementById("jsonInput").value;
+  const output = document.getElementById("jsonOutput");
+  try {
+    JSON.parse(input);
+    output.value = "✅ 유효한 JSON입니다.";
+    output.style.color = "#1a7f37";
+  } catch (e) {
+    output.value = "❌ 오류: " + e.message;
+    output.style.color = "#cf222e";
+  }
+}
+
+
+// ===== 색상 변환기 =====
+function convertColor(from) {
+  const hexInput = document.getElementById("colorHex");
+  const picker = document.getElementById("colorPicker");
+  const rgbOutput = document.getElementById("colorRgb");
+  const preview = document.getElementById("colorPreview");
+
+  let hex = hexInput.value.trim();
+  if (from === "picker") {
+    hex = picker.value;
+    hexInput.value = hex;
+  } else {
+    if (!hex.startsWith("#")) hex = "#" + hex;
+    if (/^#[0-9A-Fa-f]{6}$/.test(hex)) picker.value = hex;
+  }
+
+  if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+    rgbOutput.value = "";
+    preview.style.background = "#ccc";
+    return;
+  }
+
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  rgbOutput.value = `rgb(${r}, ${g}, ${b})`;
+  preview.style.background = hex;
+}
+
+
+// ===== Markdown 미리보기 =====
+function updateMarkdownPreview() {
+  const input = document.getElementById("markdownInput").value;
+  const preview = document.getElementById("markdownPreview");
+  if (typeof marked !== "undefined") {
+    preview.innerHTML = (marked.parse || marked)(input || "");
+  } else {
+    preview.textContent = input;
+  }
 }

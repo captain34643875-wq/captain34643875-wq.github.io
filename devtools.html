@@ -15,6 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 </head>
 <body>
@@ -24,7 +25,7 @@
 
   <div class="menu">
     <a href="index.html" data-ko="홈" data-en="Home">홈</a>
-    <a href="#sorting" data-ko="도구" data-en="Tools">도구</a>
+    <a href="#tool-directory" data-ko="도구" data-en="Tools">도구</a>
   </div>
 
   <div class="links">
@@ -45,6 +46,45 @@
   <p data-ko="코딩 학습을 위한 유용한 도구들" data-en="Useful tools for coding practice">
      코딩 학습을 위한 유용한 도구들
   </p>
+</section>
+
+<!-- Tool Directory -->
+<section id="tool-directory">
+  <h2 data-ko="도구 둘러보기" data-en="Browse Tools">도구 둘러보기</h2>
+  <div class="tool-grid">
+    <a href="#sorting" class="tool-card">
+      <span class="tool-icon">📊</span>
+      <span data-ko="정렬 시각화" data-en="Sorting">정렬 시각화</span>
+    </a>
+    <a href="#editor" class="tool-card">
+      <span class="tool-icon">📝</span>
+      <span data-ko="코드 에디터" data-en="Code Editor">코드 에디터</span>
+    </a>
+    <a href="#regex" class="tool-card">
+      <span class="tool-icon">🔍</span>
+      <span data-ko="정규표현식" data-en="Regex">정규표현식</span>
+    </a>
+    <a href="#json" class="tool-card">
+      <span class="tool-icon">📋</span>
+      <span data-ko="JSON 포맷터" data-en="JSON Formatter">JSON 포맷터</span>
+    </a>
+    <a href="#converter" class="tool-card">
+      <span class="tool-icon">🔢</span>
+      <span data-ko="진법 변환" data-en="Base Converter">진법 변환</span>
+    </a>
+    <a href="#color" class="tool-card">
+      <span class="tool-icon">🎨</span>
+      <span data-ko="색상 변환" data-en="Color Converter">색상 변환</span>
+    </a>
+    <a href="#markdown" class="tool-card">
+      <span class="tool-icon">📄</span>
+      <span data-ko="Markdown" data-en="Markdown">Markdown</span>
+    </a>
+    <a href="#ascii" class="tool-card">
+      <span class="tool-icon">🔤</span>
+      <span data-ko="ASCII 테이블" data-en="ASCII Table">ASCII 테이블</span>
+    </a>
+  </div>
 </section>
 
 <!-- Sorting Algorithm Visualizer -->
@@ -174,6 +214,26 @@
   </div>
 </section>
 
+<!-- JSON Formatter -->
+<section id="json">
+  <h2 data-ko="JSON 포맷터 / 검증기" data-en="JSON Formatter / Validator">JSON 포맷터 / 검증기</h2>
+  <div class="json-editor-grid">
+    <div class="input-group">
+      <label data-ko="JSON 입력" data-en="JSON Input">JSON 입력</label>
+      <textarea id="jsonInput" class="input-field" rows="12" placeholder='{"name": "test", "count": 1}'></textarea>
+    </div>
+    <div class="input-group">
+      <label data-ko="결과" data-en="Result">결과</label>
+      <textarea id="jsonOutput" class="input-field" rows="12" placeholder="포맷/검증 결과..." readonly></textarea>
+    </div>
+  </div>
+  <div class="json-buttons">
+    <button onclick="formatJSON()" class="tool-btn primary" data-ko="포맷" data-en="Format">포맷</button>
+    <button onclick="minifyJSON()" class="tool-btn" data-ko="압축" data-en="Minify">압축</button>
+    <button onclick="validateJSON()" class="tool-btn" data-ko="검증" data-en="Validate">검증</button>
+  </div>
+</section>
+
 <!-- Base Converter -->
 <section id="converter">
   <h2 data-ko="진법 변환기" data-en="Base Converter">진법 변환기</h2>
@@ -194,6 +254,50 @@
     <div class="base-card">
       <label class="base-label" data-ko="16진수 (Hexadecimal)" data-en="Hexadecimal">16진수 (Hexadecimal)</label>
       <input type="text" id="hexadecimal" class="input-field" placeholder="0" oninput="convertFrom(16)">
+    </div>
+  </div>
+</section>
+
+<!-- Color Converter -->
+<section id="color">
+  <h2 data-ko="색상 변환기" data-en="Color Converter">색상 변환기</h2>
+  <div class="color-converter-grid">
+    <div class="color-card">
+      <label class="base-label" data-ko="HEX" data-en="HEX">HEX</label>
+      <div class="color-input-row">
+        <input type="text" id="colorHex" class="input-field" placeholder="#667eea" value="#667eea" oninput="convertColor('hex')">
+        <input type="color" id="colorPicker" value="#667eea" oninput="convertColor('picker')">
+      </div>
+    </div>
+    <div class="color-card">
+      <label class="base-label" data-ko="RGB" data-en="RGB">RGB</label>
+      <input type="text" id="colorRgb" class="input-field" placeholder="rgb(102, 126, 234)" readonly>
+    </div>
+    <div class="color-card">
+      <label class="base-label" data-ko="미리보기" data-en="Preview">미리보기</label>
+      <div id="colorPreview" class="color-preview"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Markdown Preview -->
+<section id="markdown">
+  <h2 data-ko="Markdown 미리보기" data-en="Markdown Preview">Markdown 미리보기</h2>
+  <div class="markdown-grid">
+    <div class="input-group">
+      <label data-ko="Markdown 작성" data-en="Write Markdown">Markdown 작성</label>
+      <textarea id="markdownInput" class="input-field" rows="15" placeholder="# 제목&#10;## 소제목&#10;**굵게** *기울임*&#10;- 목록"># Hello
+## 소제목
+**굵게** *기울임*
+
+- 목록 1
+- 목록 2
+
+[링크](https://example.com)</textarea>
+    </div>
+    <div class="input-group">
+      <label data-ko="미리보기" data-en="Preview">미리보기</label>
+      <div id="markdownPreview" class="markdown-preview"></div>
     </div>
   </div>
 </section>
