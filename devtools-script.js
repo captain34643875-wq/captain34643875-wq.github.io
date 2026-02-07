@@ -47,10 +47,12 @@ window.addEventListener("DOMContentLoaded", () => {
   htmlCM = CodeMirror.fromTextArea(
     document.getElementById("htmlEditor"),
     {
-      mode: "xml",
+      mode: "text/html",
       theme: "dracula",
       lineNumbers: true,
-      autoCloseBrackets: true
+      autoCloseBrackets: true,
+      autoCloseTags: true,
+      matchBrackets: true
     }
   );
 
@@ -60,7 +62,8 @@ window.addEventListener("DOMContentLoaded", () => {
       mode: "css",
       theme: "dracula",
       lineNumbers: true,
-      autoCloseBrackets: true
+      autoCloseBrackets: true,
+      matchBrackets: true
     }
   );
 
@@ -70,9 +73,17 @@ window.addEventListener("DOMContentLoaded", () => {
       mode: "javascript",
       theme: "dracula",
       lineNumbers: true,
-      autoCloseBrackets: true
+      autoCloseBrackets: true,
+      matchBrackets: true
     }
   );
+
+  // Ctrl + Enter 실행
+  document.addEventListener("keydown", e => {
+    if (e.ctrlKey && e.key === "Enter") {
+      runCode();
+    }
+  });
 
   // ===== 초기화 =====
   generateArray();
@@ -146,7 +157,7 @@ function updateDescription() {
 }
 
 
-// ===== 정렬 로직 (기존 그대로) =====
+// ===== 정렬 로직 =====
 function generateArray() {
   array = Array.from({ length: 30 }, () =>
     Math.floor(Math.random() * 320) + 30
