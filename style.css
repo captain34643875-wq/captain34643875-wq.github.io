@@ -135,3 +135,114 @@ body.dark .card {
   transform: translateY(-8px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
+
+/* ===== Official Accounts ===== */
+.accounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.account-card {
+  background: #ffffff;
+  color: #111;
+  border-radius: 14px;
+  padding: 20px;
+  width: 230px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.account-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.account-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 0 0, #58a6ff, #0969da);
+  overflow: hidden;
+}
+
+.account-icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.account-label {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.account-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.account-handle {
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.account-desc {
+  margin: 6px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.account-btn {
+  margin-top: 14px;
+  padding: 8px 0;
+  border-radius: 999px;
+  border: none;
+  background: #0969da;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  display: block;
+  width: 100%;
+}
+
+.account-btn:hover {
+  background: #0550ae;
+  transform: translateY(-1px);
+}
+
+.account-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+  border-color: #0969da;
+}
+
+body.dark .account-card {
+  background: #111827;
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #c9d1d9;
+}
+
+body.dark .account-btn {
+  background: #1f6feb;
+  color: #f9fafb;
+}
+
+body.dark .account-btn:hover {
+  background: #388bfd;
+}
