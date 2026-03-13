@@ -1,6 +1,6 @@
 const themeBtn = document.getElementById("themeToggle");
 const langBtn = document.getElementById("langToggle");
-const githubLogo = document.querySelector('img[alt="GitHub"]'); // GitHub 로고 선택
+const githubLogos = document.querySelectorAll('img[alt="GitHub"]'); // GitHub 로고들 선택
 
 let isDark = false;   // 처음은 라이트
 let isKorean = true; // 처음은 한국어
@@ -12,11 +12,13 @@ themeBtn.addEventListener("click", () => {
   themeBtn.textContent = isDark ? "Light" : "Dark";
   
   // 🔥 GitHub 로고 변경 추가
-  if (isDark) {
-    githubLogo.src = "images/github_v2.png"; // 다크모드용
-  } else {
-    githubLogo.src = "images/github.png";    // 라이트모드용
-  }
+  githubLogos.forEach(logo => {
+    if (isDark) {
+      logo.src = "images/github_v2.png"; // 다크모드용
+    } else {
+      logo.src = "images/github.png";    // 라이트모드용
+    }
+  });
 });
 
 /* 언어 토글 */
