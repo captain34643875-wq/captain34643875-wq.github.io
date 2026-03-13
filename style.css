@@ -5,13 +5,14 @@
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
+  background: #ffffff;
 }
 
 /* ===== 라이트 ===== */
 body {
   margin: 0;
   padding-top: 80px;
-  background: #ffffff;
+  background: #ffffff !important;
   color: #111;
   font-family: Arial, sans-serif;
   transition: background 0.25s ease, color 0.25s ease;
@@ -176,7 +177,8 @@ body.dark .card {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 0 0, #58a6ff, #0969da);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   overflow: hidden;
 }
 
@@ -243,6 +245,11 @@ body.dark .account-card {
   color: #c9d1d9;
 }
 
+body.dark .account-icon {
+  background: #020617;
+  border-color: #1f2937;
+}
+
 body.dark .account-btn {
   background: #1f6feb;
   color: #f9fafb;
@@ -257,8 +264,8 @@ body.dark .account-btn:hover {
   margin-top: 24px;
   padding: 16px 18px;
   border-radius: 12px;
-  border: 1px solid #dbeafe;
-  background: #eef2ff;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
   display: flex;
   gap: 10px;
   align-items: flex-start;
@@ -278,7 +285,7 @@ body.dark .account-btn:hover {
 }
 
 body.dark .notice-box {
-  border-color: #1d4ed8;
+  border-color: #1f2937;
   background: #020617;
 }
 
