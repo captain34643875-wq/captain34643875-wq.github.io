@@ -11,7 +11,7 @@ html {
 body {
   margin: 0;
   padding-top: 80px;
-  background: #f5f7fa;
+  background: #ffffff;
   color: #111;
   font-family: Arial, sans-serif;
   transition: background 0.25s ease, color 0.25s ease;
@@ -245,4 +245,38 @@ body.dark .account-btn {
 
 body.dark .account-btn:hover {
   background: #388bfd;
+}
+
+/* ===== 안내 박스 ===== */
+.notice-box {
+  margin-top: 24px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+}
+
+.notice-icon {
+  font-weight: 700;
+  color: #0f5cc0;
+  margin-top: 2px;
+}
+
+.notice-content strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #0f172a;
+}
+
+body.dark .notice-box {
+  border-color: #1f2937;
+  background: #020617;
+}
+
+body.dark .notice-icon {
+  color: #60a5fa;
 }
