@@ -240,8 +240,8 @@ body.dark .card {
 }
 
 body.dark .account-card {
-  background: #111827;
-  border-color: rgba(148, 163, 184, 0.35);
+  background: #161b22;
+  border-color: #30363d;
   color: #c9d1d9;
 }
 
@@ -264,8 +264,8 @@ body.dark .account-btn:hover {
   margin-top: 24px;
   padding: 16px 18px;
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
+  border: 1px solid #dbeafe;
+  background: #eef2ff;
   display: flex;
   gap: 10px;
   align-items: flex-start;
@@ -284,8 +284,18 @@ body.dark .account-btn:hover {
   color: #0f172a;
 }
 
+.notice-text {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+}
+
+.notice-text:last-child {
+  margin-bottom: 0;
+  opacity: 0.8;
+}
+
 body.dark .notice-box {
-  border-color: #1f2937;
+  border-color: #1d4ed8;
   background: #020617;
 }
 
