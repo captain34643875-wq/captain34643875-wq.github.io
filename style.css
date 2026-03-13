@@ -109,6 +109,11 @@ section#contact {
   background: #ffffff;
 }
 
+/* 다크 모드에서도 공식 계정 제목은 진한 색으로 보이도록 */
+body.dark section#contact h2 {
+  color: #111827;
+}
+
 .hero {
   text-align: center;
   padding-top: 120px;
