@@ -12,7 +12,7 @@ html {
 body {
   margin: 0;
   padding-top: 80px;
-  background: #ffffff !important;
+  background: #ffffff;
   color: #111;
   font-family: Arial, sans-serif;
   transition: background 0.25s ease, color 0.25s ease;
