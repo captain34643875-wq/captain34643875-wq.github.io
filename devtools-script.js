@@ -1,111 +1,183 @@
-// ===== 전역 상태 =====
-let isDark = false;
-let isKorean = true;
+﻿const THEME_KEY = "captain-devtools-theme";
+const LANG_KEY = "captain-devtools-lang";
+
+let isDark = localStorage.getItem(THEME_KEY)
+  ? localStorage.getItem(THEME_KEY) === "dark"
+  : window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+let isKorean = localStorage.getItem(LANG_KEY)
+  ? localStorage.getItem(LANG_KEY) === "ko"
+  : true;
 
 let array = [];
 let originalArray = [];
 let sorting = false;
+let htmlCM;
+let cssCM;
+let jsCM;
 
-let htmlCM, cssCM, jsCM;
+const algorithmDescriptions = {
+  bubble: {
+    ko: {
+      title: "버블 정렬 (Bubble Sort)",
+      description: "인접한 두 값을 비교해서 큰 값을 뒤로 보내는 가장 직관적인 정렬입니다.",
+      complexity: ["시간 O(n^2)", "공간 O(1)", "안정 정렬"]
+    },
+    en: {
+      title: "Bubble Sort",
+      description: "Compares adjacent elements and moves larger values backward.",
+      complexity: ["Time O(n^2)", "Space O(1)", "Stable"]
+    }
+  },
+  selection: {
+    ko: {
+      title: "선택 정렬 (Selection Sort)",
+      description: "매번 가장 작은 값을 골라 앞쪽으로 보내는 방식입니다.",
+      complexity: ["시간 O(n^2)", "공간 O(1)", "비안정 정렬"]
+    },
+    en: {
+      title: "Selection Sort",
+      description: "Selects the smallest value and places it at the front.",
+      complexity: ["Time O(n^2)", "Space O(1)", "Unstable"]
+    }
+  },
+  insertion: {
+    ko: {
+      title: "삽입 정렬 (Insertion Sort)",
+      description: "정렬된 구간에 새로운 값을 알맞은 위치로 끼워 넣습니다.",
+      complexity: ["시간 O(n^2)", "공간 O(1)", "안정 정렬"]
+    },
+    en: {
+      title: "Insertion Sort",
+      description: "Inserts each element into its correct position.",
+      complexity: ["Time O(n^2)", "Space O(1)", "Stable"]
+    }
+  },
+  quick: {
+    ko: {
+      title: "퀵 정렬 (Quick Sort)",
+      description: "피벗을 기준으로 나누어 정렬하는 빠른 분할 정렬입니다.",
+      complexity: ["평균 O(n log n)", "최악 O(n^2)", "비안정 정렬"]
+    },
+    en: {
+      title: "Quick Sort",
+      description: "Partitions data around a pivot.",
+      complexity: ["Avg O(n log n)", "Worst O(n^2)", "Unstable"]
+    }
+  }
+};
 
-// ===== DOM 로드 이후 =====
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const themeBtn = document.getElementById("themeToggle");
   const langBtn = document.getElementById("langToggle");
+  const yearEl = document.getElementById("year");
+  const backToTopBtn = document.getElementById("backToTop");
+  const githubLogos = document.querySelectorAll('img[alt="GitHub"]');
 
-  /* 다크 / 라이트 */
-  themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    isDark = !isDark;
+  function applyTheme() {
+    document.body.classList.toggle("dark", isDark);
     themeBtn.textContent = isDark ? "Light" : "Dark";
-  });
+    document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+    localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
 
-  /* 언어 토글 */
-  langBtn.addEventListener("click", () => {
-    isKorean = !isKorean;
+    githubLogos.forEach((logo) => {
+      logo.src = isDark ? "images/github_v2.png" : "images/github.png";
+    });
+  }
+
+  function applyLanguage() {
+    document.documentElement.lang = isKorean ? "ko" : "en";
     langBtn.textContent = isKorean ? "EN" : "KO";
+    localStorage.setItem(LANG_KEY, isKorean ? "ko" : "en");
 
-    document.querySelectorAll("[data-ko]").forEach(el => {
-      const newText = isKorean ? el.dataset.ko : el.dataset.en;
-      if (
-        el.tagName === "BUTTON" ||
-        el.tagName === "OPTION" ||
-        el.tagName === "SPAN" ||
-        el.tagName === "LABEL" ||
-        el.tagName === "H3" ||
-        el.tagName === "P"
-      ) {
-        el.textContent = newText;
+    document.querySelectorAll("[data-ko]").forEach((el) => {
+      const value = isKorean ? el.dataset.ko : el.dataset.en;
+      if (["BUTTON", "OPTION", "SPAN", "LABEL", "H3", "P", "A"].includes(el.tagName)) {
+        el.textContent = value;
       } else {
-        el.innerHTML = newText;
+        el.innerHTML = value;
       }
     });
 
-    if (typeof updateDescription === "function") {
-      updateDescription();
+    updateDescription();
+  }
+
+  themeBtn.addEventListener("click", () => {
+    isDark = !isDark;
+    applyTheme();
+  });
+
+  langBtn.addEventListener("click", () => {
+    isKorean = !isKorean;
+    applyLanguage();
+  });
+
+  window.addEventListener("scroll", () => {
+    if (backToTopBtn) {
+      backToTopBtn.classList.toggle("is-visible", window.scrollY > 500);
     }
   });
 
-  // ===== CodeMirror 초기화 =====
-  htmlCM = CodeMirror.fromTextArea(
-    document.getElementById("htmlEditor"),
-    {
-      mode: "text/html",
-      theme: "dracula",
-      lineNumbers: true,
-      autoCloseBrackets: true,
-      autoCloseTags: true,
-      matchBrackets: true
-    }
-  );
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
-  cssCM = CodeMirror.fromTextArea(
-    document.getElementById("cssEditor"),
-    {
-      mode: "css",
-      theme: "dracula",
-      lineNumbers: true,
-      autoCloseBrackets: true,
-      matchBrackets: true
-    }
-  );
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
-  jsCM = CodeMirror.fromTextArea(
-    document.getElementById("jsEditor"),
-    {
-      mode: "javascript",
-      theme: "dracula",
-      lineNumbers: true,
-      autoCloseBrackets: true,
-      matchBrackets: true
-    }
-  );
+  applyTheme();
+  applyLanguage();
 
-  // 에디터 탭 전환 (초기: HTML만 표시)
+  htmlCM = CodeMirror.fromTextArea(document.getElementById("htmlEditor"), {
+    mode: "text/html",
+    theme: "dracula",
+    lineNumbers: true,
+    autoCloseBrackets: true,
+    autoCloseTags: true,
+    matchBrackets: true
+  });
+
+  cssCM = CodeMirror.fromTextArea(document.getElementById("cssEditor"), {
+    mode: "css",
+    theme: "dracula",
+    lineNumbers: true,
+    autoCloseBrackets: true,
+    matchBrackets: true
+  });
+
+  jsCM = CodeMirror.fromTextArea(document.getElementById("jsEditor"), {
+    mode: "javascript",
+    theme: "dracula",
+    lineNumbers: true,
+    autoCloseBrackets: true,
+    matchBrackets: true
+  });
+
   cssCM.getWrapperElement().style.display = "none";
   jsCM.getWrapperElement().style.display = "none";
+
   const editors = { html: htmlCM, css: cssCM, js: jsCM };
   document.querySelectorAll(".editor-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
       document.querySelectorAll(".editor-tab").forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
       const lang = tab.dataset.lang;
-      Object.entries(editors).forEach(([k, cm]) => {
-        const show = k === lang;
+      Object.entries(editors).forEach(([key, cm]) => {
+        const show = key === lang;
         cm.getWrapperElement().style.display = show ? "" : "none";
         if (show) setTimeout(() => cm.refresh(), 0);
       });
     });
   });
 
-  // Ctrl + Enter 실행
-  document.addEventListener("keydown", e => {
+  document.addEventListener("keydown", (e) => {
     if (e.ctrlKey && e.key === "Enter") {
       runCode();
     }
   });
 
-  // ===== 초기화 =====
   generateArray();
   runCode();
   generateASCIITable();
@@ -113,59 +185,6 @@ window.addEventListener("DOMContentLoaded", () => {
   updateMarkdownPreview();
   document.getElementById("markdownInput").addEventListener("input", updateMarkdownPreview);
 });
-
-
-// ===== 정렬 알고리즘 설명 =====
-const algorithmDescriptions = {
-  bubble: {
-    ko: {
-      title: "💡 버블 정렬 (Bubble Sort)",
-      description: "인접한 두 원소를 비교하여 큰 값을 뒤로 보냅니다.",
-      complexity: ["⏱️ O(n²)", "📦 O(1)", "✅ 안정 정렬"]
-    },
-    en: {
-      title: "💡 Bubble Sort",
-      description: "Compares adjacent elements and moves larger values backward.",
-      complexity: ["⏱️ O(n²)", "📦 O(1)", "✅ Stable"]
-    }
-  },
-  selection: {
-    ko: {
-      title: "💡 선택 정렬 (Selection Sort)",
-      description: "가장 작은 값을 선택해 앞으로 보냅니다.",
-      complexity: ["⏱️ O(n²)", "📦 O(1)", "❌ 불안정"]
-    },
-    en: {
-      title: "💡 Selection Sort",
-      description: "Selects the smallest value and places it at the front.",
-      complexity: ["⏱️ O(n²)", "📦 O(1)", "❌ Unstable"]
-    }
-  },
-  insertion: {
-    ko: {
-      title: "💡 삽입 정렬 (Insertion Sort)",
-      description: "정렬된 부분에 적절한 위치로 삽입합니다.",
-      complexity: ["⏱️ O(n²)", "📦 O(1)", "✅ 안정"]
-    },
-    en: {
-      title: "💡 Insertion Sort",
-      description: "Inserts elements into the correct position.",
-      complexity: ["⏱️ O(n²)", "📦 O(1)", "✅ Stable"]
-    }
-  },
-  quick: {
-    ko: {
-      title: "💡 퀵 정렬 (Quick Sort)",
-      description: "기준값을 중심으로 분할하며 정렬합니다.",
-      complexity: ["⏱️ 평균 O(n log n)", "⏱️ 최악 O(n²)", "❌ 불안정"]
-    },
-    en: {
-      title: "💡 Quick Sort",
-      description: "Partitions data around a pivot.",
-      complexity: ["⏱️ Avg O(n log n)", "⏱️ Worst O(n²)", "❌ Unstable"]
-    }
-  }
-};
 
 function updateDescription() {
   const algorithm = document.getElementById("algorithm").value;
@@ -175,17 +194,13 @@ function updateDescription() {
   document.getElementById("algorithmDescription").innerHTML = `
     <h3>${desc.title}</h3>
     <p>${desc.description}</p>
-    <ul>${desc.complexity.map(v => `<li>${v}</li>`).join("")}</ul>
+    <ul>${desc.complexity.map((item) => `<li>${item}</li>`).join("")}</ul>
   `;
 }
 
-
-// ===== 정렬 로직 =====
 function generateArray() {
   if (sorting) return;
-  array = Array.from({ length: 30 }, () =>
-    Math.floor(Math.random() * 320) + 30
-  );
+  array = Array.from({ length: 30 }, () => Math.floor(Math.random() * 320) + 30);
   originalArray = [...array];
   displayArray();
 }
@@ -193,19 +208,16 @@ function generateArray() {
 function displayArray(highlight = {}) {
   const container = document.getElementById("arrayContainer");
   container.innerHTML = "";
-  array.forEach((v, i) => {
+
+  array.forEach((value, index) => {
     const bar = document.createElement("div");
     bar.className = "bar";
-    if (highlight.sorted && highlight.sorted.includes(i)) bar.classList.add("sorted");
-    if (highlight.comparing && highlight.comparing.includes(i)) bar.classList.add("comparing");
-    if (highlight.swapping && highlight.swapping.includes(i)) bar.classList.add("swapping");
-    bar.style.height = `${v}px`;
+    if (highlight.sorted && highlight.sorted.includes(index)) bar.classList.add("sorted");
+    if (highlight.comparing && highlight.comparing.includes(index)) bar.classList.add("comparing");
+    if (highlight.swapping && highlight.swapping.includes(index)) bar.classList.add("swapping");
+    bar.style.height = `${value}px`;
     container.appendChild(bar);
   });
-}
-
-function getBars() {
-  return document.querySelectorAll("#arrayContainer .bar");
 }
 
 function getDelay() {
@@ -226,15 +238,14 @@ function startSort() {
   const algo = document.getElementById("algorithm").value;
   const delay = getDelay();
 
-  const run = async () => {
+  (async () => {
     if (algo === "bubble") await bubbleSort(delay);
     else if (algo === "selection") await selectionSort(delay);
     else if (algo === "insertion") await insertionSort(delay);
     else if (algo === "quick") await quickSort(0, array.length - 1, delay);
     displayArray({ sorted: array.map((_, i) => i) });
     sorting = false;
-  };
-  run();
+  })();
 }
 
 async function bubbleSort(delay) {
@@ -278,18 +289,18 @@ async function selectionSort(delay) {
 async function insertionSort(delay) {
   const sorted = [0];
   for (let i = 1; i < array.length; i++) {
-    const val = array[i];
+    const value = array[i];
     let j = i - 1;
     displayArray({ comparing: [i], sorted });
     await sleep(delay);
-    while (j >= 0 && array[j] > val) {
+    while (j >= 0 && array[j] > value) {
       array[j + 1] = array[j];
       const leftSorted = Array.from({ length: j }, (_, k) => k);
       displayArray({ comparing: [j + 1], swapping: [j], sorted: leftSorted });
       await sleep(delay);
       j--;
     }
-    array[j + 1] = val;
+    array[j + 1] = value;
     sorted.push(i);
     displayArray({ sorted });
     await sleep(delay);
@@ -318,36 +329,30 @@ async function quickSort(low, high, delay) {
 }
 
 function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-
-// ===== 코드 에디터 실행 =====
 function runCode() {
   const html = htmlCM.getValue();
   const css = cssCM.getValue();
-  const js = jsCM.getValue();
+  const js = jsCM.getValue().replace(/<\/script>/gi, "<\\/script>");
 
   let output = html;
-  // CSS를 </head> 앞에 삽입
   if (output.includes("</head>")) {
     output = output.replace("</head>", `<style>${css}</style></head>`);
   } else {
     output = `<head><style>${css}</style></head><body>${output}</body>`;
   }
-  // JS를 </body> 앞에 삽입 (</script> 이스케이프로 파싱 깨짐 방지)
-  const safeJs = js.replace(/<\/script>/gi, "<\\/script>");
+
   if (output.includes("</body>")) {
-    output = output.replace("</body>", `<script>${safeJs}<\/script></body>`);
+    output = output.replace("</body>", `<script>${js}</script></body>`);
   } else {
-    output = output + `<script>${safeJs}<\/script>`;
+    output += `<script>${js}</script>`;
   }
 
   document.getElementById("preview").srcdoc = output;
 }
 
-
-// ===== 정규표현식 테스터 =====
 function testRegex() {
   const pattern = document.getElementById("regexPattern").value;
   const flags =
@@ -360,31 +365,30 @@ function testRegex() {
   try {
     const regex = new RegExp(pattern, flags);
     const matches = [...testStr.matchAll(regex)];
+
     if (matches.length === 0) {
-      container.innerHTML =
-        '<p class="placeholder" data-ko="매칭 없음" data-en="No matches">매칭 없음</p>';
-    } else {
-      container.innerHTML = matches
-        .map(
-          (m, i) =>
-            `<div class="match-item">
-              <strong>#${i + 1}</strong> "${m[0]}"
-              ${m.index !== undefined ? ` @ index ${m.index}` : ""}
-              ${m.groups && Object.keys(m.groups).length ? `<br>Groups: ${JSON.stringify(m.groups)}` : ""}
-            </div>`
-        )
-        .join("");
+      container.innerHTML = '<p class="placeholder">No matches</p>';
+      return;
     }
-  } catch (e) {
-    container.innerHTML = `<p style="color:#cf222e">오류: ${e.message}</p>`;
+
+    container.innerHTML = matches
+      .map(
+        (match, index) => `
+          <div class="match-item">
+            <strong>#${index + 1}</strong> "${match[0]}"${match.index !== undefined ? ` @ index ${match.index}` : ""}
+            ${match.groups && Object.keys(match.groups).length ? `<br>Groups: ${JSON.stringify(match.groups)}` : ""}
+          </div>`
+      )
+      .join("");
+  } catch (error) {
+    container.innerHTML = `<p style="color:#cf222e">Error: ${error.message}</p>`;
   }
 }
 
-
-// ===== 진법 변환기 =====
 function convertFrom(base) {
   const ids = { 2: "binary", 8: "octal", 10: "decimal", 16: "hexadecimal" };
   const input = document.getElementById(ids[base]).value.trim();
+
   if (!input) {
     document.getElementById("decimal").value = "";
     document.getElementById("binary").value = "";
@@ -392,39 +396,34 @@ function convertFrom(base) {
     document.getElementById("hexadecimal").value = "";
     return;
   }
-  let num;
-  try {
-    num = parseInt(input, base);
-    if (isNaN(num)) throw new Error("Invalid");
-  } catch {
-    return;
-  }
+
+  let num = parseInt(input, base);
+  if (Number.isNaN(num)) return;
+
   document.getElementById("decimal").value = num.toString(10);
   document.getElementById("binary").value = num.toString(2);
   document.getElementById("octal").value = num.toString(8);
   document.getElementById("hexadecimal").value = num.toString(16).toUpperCase();
 }
 
-
-// ===== ASCII 테이블 =====
 function generateASCIITable() {
   const container = document.getElementById("asciiTableContainer");
   const range = document.getElementById("charRange").value;
   const search = (document.getElementById("searchChar").value || "").toLowerCase();
   let chars = [];
+
   if (range === "basic") {
     for (let i = 32; i < 128; i++) chars.push([i, String.fromCharCode(i)]);
   } else if (range === "extended") {
     for (let i = 0; i < 256; i++) chars.push([i, String.fromCharCode(i)]);
-  } else if (range === "korean") {
+  } else {
     for (let i = 0xac00; i <= 0xd7a3; i += 50) chars.push([i, String.fromCharCode(i)]);
   }
+
   if (search) {
-    chars = chars.filter(
-      ([code, ch]) =>
-        ch.toLowerCase().includes(search) || code.toString().includes(search)
-    );
+    chars = chars.filter(([code, ch]) => ch.toLowerCase().includes(search) || code.toString().includes(search));
   }
+
   let html = "<table><tr><th>Char</th><th>Dec</th><th>Hex</th></tr>";
   chars.forEach(([code, ch]) => {
     const safe = ch === "<" ? "&lt;" : ch === "&" ? "&amp;" : ch;
@@ -438,17 +437,16 @@ function searchASCII() {
   generateASCIITable();
 }
 
-
-// ===== JSON 포맷터 =====
 function formatJSON() {
   const input = document.getElementById("jsonInput").value;
   const output = document.getElementById("jsonOutput");
+
   try {
     const parsed = JSON.parse(input);
     output.value = JSON.stringify(parsed, null, 2);
     output.style.color = "";
-  } catch (e) {
-    output.value = "❌ 오류: " + e.message;
+  } catch (error) {
+    output.value = `Error: ${error.message}`;
     output.style.color = "#cf222e";
   }
 }
@@ -456,12 +454,13 @@ function formatJSON() {
 function minifyJSON() {
   const input = document.getElementById("jsonInput").value;
   const output = document.getElementById("jsonOutput");
+
   try {
     const parsed = JSON.parse(input);
     output.value = JSON.stringify(parsed);
     output.style.color = "";
-  } catch (e) {
-    output.value = "❌ 오류: " + e.message;
+  } catch (error) {
+    output.value = `Error: ${error.message}`;
     output.style.color = "#cf222e";
   }
 }
@@ -469,18 +468,17 @@ function minifyJSON() {
 function validateJSON() {
   const input = document.getElementById("jsonInput").value;
   const output = document.getElementById("jsonOutput");
+
   try {
     JSON.parse(input);
-    output.value = "✅ 유효한 JSON입니다.";
+    output.value = "Valid JSON";
     output.style.color = "#1a7f37";
-  } catch (e) {
-    output.value = "❌ 오류: " + e.message;
+  } catch (error) {
+    output.value = `Error: ${error.message}`;
     output.style.color = "#cf222e";
   }
 }
 
-
-// ===== 색상 변환기 =====
 function convertColor(from) {
   const hexInput = document.getElementById("colorHex");
   const picker = document.getElementById("colorPicker");
@@ -492,7 +490,7 @@ function convertColor(from) {
     hex = picker.value;
     hexInput.value = hex;
   } else {
-    if (!hex.startsWith("#")) hex = "#" + hex;
+    if (!hex.startsWith("#")) hex = `#${hex}`;
     if (/^#[0-9A-Fa-f]{6}$/.test(hex)) picker.value = hex;
   }
 
@@ -509,11 +507,10 @@ function convertColor(from) {
   preview.style.background = hex;
 }
 
-
-// ===== Markdown 미리보기 =====
 function updateMarkdownPreview() {
   const input = document.getElementById("markdownInput").value;
   const preview = document.getElementById("markdownPreview");
+
   if (typeof marked !== "undefined") {
     preview.innerHTML = (marked.parse || marked)(input || "");
   } else {

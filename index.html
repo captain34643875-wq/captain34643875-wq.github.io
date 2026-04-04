@@ -1,185 +1,244 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Captain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Captain의 개인 웹사이트 - 배우고, 만들고, 계속 다듬는 공간">
+  <meta name="theme-color" content="#0f172a">
+  <title>Captain | Personal Site</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#content">본문으로 바로가기</a>
 
-<nav>
-  <div class="logo">Captain</div>
+  <nav class="topbar" aria-label="주요 메뉴">
+    <a class="logo" href="#home">Captain</a>
 
-  <div class="menu">
-    <a href="#about" data-ko="소개" data-en="About">소개</a>
-    <a href="#stack" data-ko="기술" data-en="Stack">기술</a>
-    <a href="devtools.html" data-ko="도구" data-en="Tools">도구</a>
-    <a href="#contact" data-ko="연락처" data-en="Contact">연락처</a>
-  </div>
-
-  <div class="links">
-    <button id="themeToggle" class="toggle-btn">Dark</button>
-    <button id="langToggle" class="toggle-btn">EN</button>
-
-    <a href="https://github.com/captain34643875-wq" target="_blank">
-      <img src="images/github.png" class="icon" alt="GitHub">
-    </a>
-    <a href="https://naver.me/GeWKLVMd" target="_blank">
-      <img src="images/entry.png" class="icon" alt="Entry">
-    </a>
-  </div>
-</nav>
-
-<section class="hero">
-  <h1 data-ko="안녕하세요!" data-en="Hello, World!">안녕하세요!</h1>
-  <p data-ko="대한민국의 학생 개발자 Captain입니다."
-     data-en="I'm Captain, a student from South Korea.">
-     대한민국의 학생 개발자 Captain입니다.
-  </p>
-</section>
-
-<section id="about">
-  <h2 data-ko="소개" data-en="About">소개</h2>
-  <ul>
-    <li data-ko="📚 엔트리, 파이썬, C 학습 중"
-        data-en="📚 Learning Entry, Python, C">
-        📚 엔트리, 파이썬, C 학습 중
-    </li>
-    <li data-ko="🎯 목표: 좋은 프로그래머 되기"
-        data-en="🎯 Goal: Become a great programmer">
-        🎯 목표: 좋은 프로그래머 되기
-    </li>
-    <li data-ko="🎲 TMI: 없음 ㅋㅋ"
-        data-en="🎲 Fun fact: Nothing lol">
-        🎲 TMI: 없음 ㅋㅋ
-    </li>
-  </ul>
-</section>
-
-<section id="stack">
-  <h2 data-ko="기술 스택" data-en="Tech Stack">기술 스택</h2>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Python</h3>
-      <p data-ko="자동화 · 기초"
-         data-en="Automation & Basics">
-         자동화 · 기초
-      </p>
+    <div class="menu">
+      <a href="#about" data-ko="소개" data-en="About">소개</a>
+      <a href="#stack" data-ko="기술" data-en="Stack">기술</a>
+      <a href="#projects" data-ko="프로젝트" data-en="Projects">프로젝트</a>
+      <a href="#contact" data-ko="연락" data-en="Contact">연락</a>
+      <a href="devtools.html" data-ko="도구" data-en="Tools">도구</a>
     </div>
 
-    <div class="card">
-      <h3>C</h3>
-      <p data-ko="알고리즘 · 로직"
-         data-en="Algorithm & Logic">
-         알고리즘 · 로직
-      </p>
-    </div>
+    <div class="links">
+      <button id="themeToggle" class="toggle-btn" type="button">Dark</button>
+      <button id="langToggle" class="toggle-btn" type="button">EN</button>
 
-    <div class="card">
-      <h3>HTML / CSS</h3>
-      <p data-ko="웹 프론트엔드"
-         data-en="Web Frontend">
-         웹 프론트엔드
-      </p>
+      <a href="https://github.com/captain34643875-wq" target="_blank" rel="noopener noreferrer" aria-label="GitHub 바로가기">
+        <img src="images/github.png" class="icon" alt="GitHub">
+      </a>
+      <a href="https://naver.me/GeWKLVMd" target="_blank" rel="noopener noreferrer" aria-label="Entry 바로가기">
+        <img src="images/entry.png" class="icon" alt="Entry">
+      </a>
     </div>
-  </div>
-</section>
+  </nav>
 
-<section id="contact">
-  <h2 data-ko="공식 계정" data-en="Official Accounts">공식 계정</h2>
-  <div class="accounts">
-    <div class="account-card">
-      <div class="account-main">
-        <div class="account-icon">
-          <img src="images/github.png" alt="GitHub">
+  <main id="content">
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow" data-ko="안녕하세요, 저는 Captain입니다." data-en="Hi, I'm Captain.">안녕하세요, 저는 Captain입니다.</p>
+        <h1 class="hero-title" data-ko="배우고, 만들고, 계속 다듬다" data-en="Learn, Build, Improve">
+          <span class="hero-title-line">배우고, 만들고</span>
+          <span class="hero-title-line">계속 다듬다</span>
+        </h1>
+        <p class="hero-text"
+           data-ko="한국의 학생 개발자로서 Python, C, HTML/CSS를 중심으로 배우고 있습니다. 실험한 것과 성장 기록을 이 페이지에 모아두었습니다."
+           data-en="I'm a student developer from South Korea, learning Python, C, and HTML/CSS. This page collects my experiments and growth notes.">
+          한국의 학생 개발자로서 Python, C, HTML/CSS를 중심으로 배우고 있습니다. 실험한 것과 성장 기록을 이 페이지에 모아두었습니다.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-link" href="#projects" data-ko="프로젝트 보기" data-en="See projects">프로젝트 보기</a>
+          <a class="secondary-link" href="#contact" data-ko="연락하기" data-en="Contact me">연락하기</a>
         </div>
-        <div>
-          <p class="account-label"
-             data-ko="GitHub"
-             data-en="GitHub">GitHub</p>
-          <p class="account-name">@captain34643875-wq</p>
-          <p class="account-handle"
-             data-ko="프로젝트 · 코드 저장소"
-             data-en="Projects · Code Repositories">프로젝트 · 코드 저장소</p>
-          <p class="account-desc"
-             data-ko="개인 코드와 실험용 레포지토리"
-             data-en="Personal code and experiment repositories">개인 코드와 실험용 레포지토리</p>
+
+        <div class="hero-pills" aria-label="간단 정보">
+          <span class="pill" data-ko="학생 개발자" data-en="Student developer">학생 개발자</span>
+          <span class="pill" data-ko="코드 실험 중" data-en="Coding experiments">코드 실험 중</span>
+          <span class="pill" data-ko="개인 프로젝트 중심" data-en="Personal projects">개인 프로젝트 중심</span>
         </div>
       </div>
-      <a href="https://github.com/captain34643875-wq"
-         target="_blank"
-         class="account-btn"
-         data-ko="GitHub 열어보기"
-         data-en="Open GitHub">GitHub 열어보기</a>
-    </div>
 
-    <div class="account-card">
-      <div class="account-main">
-        <div class="account-icon">
-          <img src="images/entry.png" alt="Entry">
-        </div>
-        <div>
-          <p class="account-label"
-             data-ko="Entry"
-             data-en="Entry">Entry</p>
-          <p class="account-name">@captain34643875</p>
-          <p class="account-handle"
-             data-ko="엔트리 작품 · 활동"
-             data-en="Entry projects · Activities">엔트리 작품 · 활동</p>
-          <p class="account-desc"
-             data-ko="엔트리로 만든 프로젝트 모음"
-             data-en="Collection of projects made with Entry">엔트리로 만든 프로젝트 모음</p>
+      <aside class="hero-card">
+        <p class="card-kicker" data-ko="지금 집중하는 것" data-en="Current focus">지금 집중하는 것</p>
+        <ul class="focus-list">
+          <li data-ko="기초를 단단하게 쌓기" data-en="Building strong fundamentals">기초를 탄탄하게 쌓기</li>
+          <li data-ko="웹 페이지를 더 깔끔하게 다듬기" data-en="Polishing web pages">웹 페이지를 더 깔끔하게 다듬기</li>
+          <li data-ko="작은 도구와 기능을 자주 만들어 보기" data-en="Shipping small tools often">작은 도구와 기능을 자주 만들어 보기</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="소개" data-en="About">소개</p>
+        <h2 data-ko="좋아하는 것들" data-en="What I like to build">좋아하는 것들</h2>
+      </div>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <h3 data-ko="배우는 방식" data-en="How I learn">배우는 방식</h3>
+          <p data-ko="직접 만들어 보면서 부족한 부분을 찾고, 다시 고치는 방식으로 익히고 있습니다." data-en="I learn by building, finding gaps, and iterating.">
+            직접 만들어 보면서 부족한 부분을 찾고, 다시 고치는 방식으로 익히고 있습니다.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3 data-ko="목표" data-en="Goal">목표</h3>
+          <p data-ko="사용하기 편하고 보기 좋은 웹과 도구를 직접 만들 수 있는 개발자가 되고 싶습니다." data-en="I want to become a developer who can make useful and polished web tools.">
+            사용하기 편하고 보기 좋은 웹과 도구를 직접 만들 수 있는 개발자가 되고 싶습니다.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3 data-ko="TMI" data-en="Fun fact">TMI</h3>
+          <p data-ko="기능 하나를 넣고 나면, 디자인도 꼭 한 번 더 손보는 편입니다." data-en="After adding a feature, I usually spend another round on the design.">
+            기능 하나를 넣고 나면, 디자인도 꼭 한 번 더 손보는 편입니다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="기술" data-en="Stack">기술</p>
+        <h2 data-ko="현재 다루고 있는 기술들" data-en="Tools I use right now">현재 다루고 있는 기술들</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Python</h3>
+          <p data-ko="자동화와 기본 문법 연습" data-en="Automation and core basics">자동화와 기본 문법 연습</p>
+        </article>
+        <article class="card">
+          <h3>C</h3>
+          <p data-ko="알고리즘과 논리적 사고 훈련" data-en="Algorithms and logic practice">알고리즘과 논리적 사고 훈련</p>
+        </article>
+        <article class="card">
+          <h3>HTML / CSS</h3>
+          <p data-ko="웹 화면 구성과 반응형 레이아웃" data-en="Web layout and responsive design">웹 화면 구성과 반응형 레이아웃</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="프로젝트" data-en="Projects">프로젝트</p>
+        <h2 data-ko="작게라도 계속 쌓아가는 것들" data-en="Small projects, steadily built">작게라도 계속 쌓아가는 것들</h2>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <p class="project-label">Featured</p>
+          <h3 data-ko="개인 웹사이트" data-en="Personal website">개인 웹사이트</h3>
+          <p data-ko="소개, 기술, 연락처를 한 페이지에 모아 둔 포트폴리오형 사이트입니다." data-en="A portfolio-style site that brings together my intro, stack, and contact details.">
+            소개, 기술, 연락처를 한 페이지에 모아 둔 포트폴리오형 사이트입니다.
+          </p>
+        </article>
+        <article class="project-card">
+          <p class="project-label">Tooling</p>
+          <h3 data-ko="DevTools 페이지" data-en="DevTools page">DevTools 페이지</h3>
+          <p data-ko="정렬, JSON, 정규식 등 연습용 도구를 모아둔 실험실 페이지입니다." data-en="A sandbox page for sorting, JSON, regex, and other practice tools.">
+            정렬, JSON, 정규식 등 연습용 도구를 모아둔 실험실 페이지입니다.
+          </p>
+          <a class="text-link" href="devtools.html" data-ko="도구 페이지 열기" data-en="Open tools page">도구 페이지 열기</a>
+        </article>
+        <article class="project-card">
+          <p class="project-label">Next</p>
+          <h3 data-ko="다음에 만들 것" data-en="What I'm building next">다음에 만들 것</h3>
+          <p data-ko="작은 계산기, 메모 도구, 미니 게임 같은 실용적인 페이지를 계속 추가할 계획입니다." data-en="More practical pages are coming: calculators, notes, and small games.">
+            작은 계산기, 메모 도구, 미니 게임 같은 실용적인 페이지를 계속 추가할 계획입니다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="연락" data-en="Contact">연락</p>
+        <h2 data-ko="공식 계정과 연결되는 곳" data-en="Where to reach me">공식 계정과 연결되는 곳</h2>
+      </div>
+
+      <div class="accounts">
+        <article class="account-card">
+          <div class="account-main">
+            <div class="account-icon">
+              <img src="images/github.png" alt="GitHub">
+            </div>
+            <div>
+              <p class="account-label" data-ko="GitHub" data-en="GitHub">GitHub</p>
+              <p class="account-name">@captain34643875-wq</p>
+              <p class="account-handle" data-ko="프로젝트 · 코드 저장소" data-en="Projects and code repositories">프로젝트 · 코드 저장소</p>
+              <p class="account-desc" data-ko="개인 코드와 실험 저장소를 모아두고 있습니다." data-en="I keep my code and experiments here.">
+                개인 코드와 실험 저장소를 모아두고 있습니다.
+              </p>
+            </div>
+          </div>
+          <a href="https://github.com/captain34643875-wq" target="_blank" rel="noopener noreferrer" class="account-btn" data-ko="GitHub 열기" data-en="Open GitHub">GitHub 열기</a>
+        </article>
+
+        <article class="account-card">
+          <div class="account-main">
+            <div class="account-icon">
+              <img src="images/entry.png" alt="Entry">
+            </div>
+            <div>
+              <p class="account-label" data-ko="Entry" data-en="Entry">Entry</p>
+              <p class="account-name" data-ko="@_캡틴_" data-en="@_captain_">@_캡틴_</p>
+              <p class="account-handle" data-ko="Entry 작품 · 활동" data-en="Entry projects and activities">Entry 작품 · 활동</p>
+              <p class="account-desc" data-ko="Entry로 만든 프로젝트를 모아둔 곳입니다." data-en="A collection of projects made with Entry.">
+                Entry로 만든 프로젝트를 모아둔 곳입니다.
+              </p>
+              <a href="https://playentry.org/profile/68eba835bc476241e4b847c7/project?sort=created&term=all&isOpen=all"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="subaccount-link"
+                 data-ko="부계정"
+                 data-en="Subaccount">부계정</a>
+            </div>
+          </div>
+          <a href="https://naver.me/GeWKLVMd" target="_blank" rel="noopener noreferrer" class="account-btn" data-ko="Entry 열기" data-en="Open Entry">Entry 열기</a>
+        </article>
+
+        <article class="account-card">
+          <div class="account-main">
+            <div class="account-icon account-icon-text">@</div>
+            <div>
+              <p class="account-label" data-ko="Email" data-en="Email">Email</p>
+              <p class="account-name">captain34643875@gmail.com</p>
+              <p class="account-handle" data-ko="문의 · 협업" data-en="Questions and collaboration">문의 · 협업</p>
+              <p class="account-desc" data-ko="궁금한 점이나 피드백은 이메일로 보내 주세요." data-en="Send questions or feedback by email.">
+                궁금한 점이나 피드백은 이메일로 보내 주세요.
+              </p>
+            </div>
+          </div>
+          <a href="mailto:captain34643875@gmail.com" class="account-btn" data-ko="메일 보내기" data-en="Send Email">메일 보내기</a>
+        </article>
+      </div>
+
+      <div class="notice-box">
+        <div class="notice-icon">!</div>
+        <div class="notice-content">
+          <strong data-ko="안내" data-en="Notice">안내</strong>
+          <p class="notice-text" data-ko="이 페이지에 적힌 계정만 제가 직접 운영하는 공식 계정입니다." data-en="Only the accounts listed here are officially managed by me.">
+            이 페이지에 적힌 계정만 제가 직접 운영하는 공식 계정입니다.
+          </p>
+          <p class="notice-text" data-ko="비슷한 이름의 계정을 발견하면 이메일로 한 번 더 확인해 주세요." data-en="If you see a similar account, please double-check via email.">
+            비슷한 이름의 계정을 발견하면 이메일로 한 번 더 확인해 주세요.
+          </p>
         </div>
       </div>
-      <a href="https://naver.me/GeWKLVMd"
-         target="_blank"
-         class="account-btn"
-         data-ko="Entry 열어보기"
-         data-en="Open Entry">Entry 열어보기</a>
-    </div>
+    </section>
+  </main>
 
-    <div class="account-card">
-      <div class="account-main">
-        <div class="account-icon">@</div>
-        <div>
-          <p class="account-label"
-             data-ko="Email"
-             data-en="Email">Email</p>
-          <p class="account-name">captain34643875@gmail.com</p>
-          <p class="account-handle"
-             data-ko="문의 · 협업 연락"
-             data-en="For questions or collaboration">문의 · 협업 연락</p>
-          <p class="account-desc"
-             data-ko="질문이나 피드백은 메일로 보내 주세요."
-             data-en="Send questions or feedback to this email.">질문이나 피드백은 메일로 보내 주세요.</p>
-        </div>
-      </div>
-      <a href="mailto:captain34643875@gmail.com"
-         class="account-btn"
-         data-ko="메일 보내기"
-         data-en="Send Email">메일 보내기</a>
-    </div>
-  </div>
+  <footer class="footer">
+    <p data-ko="Captain의 개인 웹사이트" data-en="Captain's personal website">Captain의 개인 웹사이트</p>
+    <p>© <span id="year"></span> Captain</p>
+  </footer>
 
-  <div class="notice-box">
-    <div class="notice-icon">!</div>
-    <div class="notice-content">
-      <strong data-ko="안내" data-en="Notice">안내</strong>
-      <p class="notice-text"
-         data-ko="이 페이지에 적힌 계정만 Captain이 직접 운영하는 공식 계정입니다."
-         data-en="Only the accounts listed here are officially managed by Captain.">
-         이 페이지에 적힌 계정만 Captain이 직접 운영하는 공식 계정입니다.
-      </p>
-      <p class="notice-text"
-         data-ko="비슷한 이름의 계정을 발견했다면, 위 이메일로 한 번 더 확인해 주세요."
-         data-en="If you find a similar account, please double‑check via the email above.">
-         비슷한 이름의 계정을 발견했다면, 위 이메일로 한 번 더 확인해 주세요.
-      </p>
-    </div>
-  </div>
-</section>
+  <button id="backToTop" class="back-to-top" type="button" aria-label="맨 위로 이동">↑</button>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+

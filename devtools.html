@@ -2,339 +2,373 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>DevTools - Captain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Captain의 DevTools - 정렬, 코드 편집, 정규식, JSON, 진법, 색상, 마크다운, ASCII 도구 모음">
+  <meta name="theme-color" content="#0f172a">
+  <title>DevTools | Captain</title>
   <link rel="stylesheet" href="devtools-style.css">
-  <!-- CodeMirror -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#content">본문으로 바로가기</a>
 
-<nav>
-  <div class="logo">Captain</div>
+  <nav class="topbar" aria-label="주요 메뉴">
+    <a class="logo" href="index.html">Captain</a>
 
-  <div class="menu">
-    <a href="index.html" data-ko="홈" data-en="Home">홈</a>
-    <a href="#tool-directory" data-ko="도구" data-en="Tools">도구</a>
-  </div>
-
-  <div class="links">
-    <button id="themeToggle" class="toggle-btn">Dark</button>
-    <button id="langToggle" class="toggle-btn">EN</button>
-
-    <a href="https://github.com/captain34643875-wq" target="_blank" class="icon-link" title="GitHub">
-      <img src="images/github.png" class="icon" alt="GitHub" onerror="this.style.display='none'; this.parentElement.innerHTML='GH';">
-    </a>
-    <a href="https://naver.me/GeWKLVMd" target="_blank" class="icon-link" title="Entry">
-      <img src="images/entry.png" class="icon" alt="Entry" onerror="this.style.display='none'; this.parentElement.innerHTML='EN';">
-    </a>
-  </div>
-</nav>
-
-<section class="hero">
-  <h1 data-ko="개발자 도구 모음" data-en="Developer Tools">개발자 도구 모음</h1>
-  <p data-ko="코딩 학습을 위한 유용한 도구들" data-en="Useful tools for coding practice">
-     코딩 학습을 위한 유용한 도구들
-  </p>
-</section>
-
-<!-- Tool Directory -->
-<section id="tool-directory">
-  <h2 data-ko="도구 둘러보기" data-en="Browse Tools">도구 둘러보기</h2>
-  <p class="tool-directory-desc" data-ko="필요한 도구를 선택해 바로 이동하세요." data-en="Select a tool to jump to it.">필요한 도구를 선택해 바로 이동하세요.</p>
-  <div class="tool-cards">
-    <a href="#sorting" class="tool-card">
-      <span class="tool-icon">📊</span>
-      <h3 data-ko="정렬 시각화" data-en="Sorting">정렬 시각화</h3>
-      <p data-ko="버블·퀵 정렬 등 알고리즘을 시각적으로 확인" data-en="Visualize bubble, quick sort and more">버블·퀵 정렬 등 알고리즘을 시각적으로 확인</p>
-      <span class="tool-arrow">→</span>
-    </a>
-    <a href="#editor" class="tool-card">
-      <span class="tool-icon">📝</span>
-      <h3 data-ko="코드 에디터" data-en="Code Editor">코드 에디터</h3>
-      <p data-ko="HTML, CSS, JS를 작성하고 미리보기" data-en="Write HTML, CSS, JS with live preview">HTML, CSS, JS를 작성하고 미리보기</p>
-      <span class="tool-arrow">→</span>
-    </a>
-    <a href="#regex" class="tool-card">
-      <span class="tool-icon">🔍</span>
-      <h3 data-ko="정규표현식" data-en="Regex">정규표현식</h3>
-      <p data-ko="패턴을 테스트하고 매칭 결과 확인" data-en="Test patterns and see matches">패턴을 테스트하고 매칭 결과 확인</p>
-      <span class="tool-arrow">→</span>
-    </a>
-    <a href="#json" class="tool-card">
-      <span class="tool-icon">📋</span>
-      <h3 data-ko="JSON 포맷터" data-en="JSON Formatter">JSON 포맷터</h3>
-      <p data-ko="JSON 포맷, 압축, 유효성 검증" data-en="Format, minify and validate JSON">JSON 포맷, 압축, 유효성 검증</p>
-      <span class="tool-arrow">→</span>
-    </a>
-    <a href="#converter" class="tool-card">
-      <span class="tool-icon">🔢</span>
-      <h3 data-ko="진법 변환" data-en="Base Converter">진법 변환</h3>
-      <p data-ko="2, 8, 10, 16진수 상호 변환" data-en="Convert between 2, 8, 10, 16 base">2, 8, 10, 16진수 상호 변환</p>
-      <span class="tool-arrow">→</span>
-    </a>
-    <a href="#color" class="tool-card">
-      <span class="tool-icon">🎨</span>
-      <h3 data-ko="색상 변환" data-en="Color Converter">색상 변환</h3>
-      <p data-ko="HEX ↔ RGB 변환 및 미리보기" data-en="HEX ↔ RGB conversion and preview">HEX ↔ RGB 변환 및 미리보기</p>
-      <span class="tool-arrow">→</span>
-    </a>
-    <a href="#markdown" class="tool-card">
-      <span class="tool-icon">📄</span>
-      <h3 data-ko="Markdown" data-en="Markdown">Markdown</h3>
-      <p data-ko="마크다운 작성 후 실시간 미리보기" data-en="Write markdown with live preview">마크다운 작성 후 실시간 미리보기</p>
-      <span class="tool-arrow">→</span>
-    </a>
-    <a href="#ascii" class="tool-card">
-      <span class="tool-icon">🔤</span>
-      <h3 data-ko="ASCII 테이블" data-en="ASCII Table">ASCII 테이블</h3>
-      <p data-ko="문자 코드 검색 및 테이블 확인" data-en="Search character codes and tables">문자 코드 검색 및 테이블 확인</p>
-      <span class="tool-arrow">→</span>
-    </a>
-  </div>
-</section>
-
-<!-- Sorting Algorithm Visualizer -->
-<section id="sorting">
-  <h2 data-ko="정렬 알고리즘 시각화" data-en="Sorting Algorithm Visualizer">정렬 알고리즘 시각화</h2>
-  
-  <div class="tool-controls">
-    <select id="algorithm" class="input-field" onchange="updateDescription()">
-      <option value="bubble" data-ko="버블 정렬" data-en="Bubble Sort">버블 정렬</option>
-      <option value="selection" data-ko="선택 정렬" data-en="Selection Sort">선택 정렬</option>
-      <option value="insertion" data-ko="삽입 정렬" data-en="Insertion Sort">삽입 정렬</option>
-      <option value="quick" data-ko="퀵 정렬" data-en="Quick Sort">퀵 정렬</option>
-    </select>
-    <button onclick="generateArray()" class="tool-btn" data-ko="새 배열" data-en="New Array">새 배열</button>
-    <button onclick="startSort()" class="tool-btn primary" data-ko="시작" data-en="Start">시작</button>
-    <button onclick="resetArray()" class="tool-btn" data-ko="초기화" data-en="Reset">초기화</button>
-    <div class="speed-control">
-      <label data-ko="속도:" data-en="Speed:">속도:</label>
-      <input type="range" id="speed" min="1" max="100" value="50">
+    <div class="menu">
+      <a href="index.html" data-ko="홈" data-en="Home">홈</a>
+      <a href="#tool-directory" data-ko="도구" data-en="Tools">도구</a>
+      <a href="#editor" data-ko="에디터" data-en="Editor">에디터</a>
+      <a href="#markdown" data-ko="마크다운" data-en="Markdown">마크다운</a>
     </div>
-  </div>
 
-  <div class="algorithm-description" id="algorithmDescription">
-    <h3 data-ko="💡 버블 정렬 (Bubble Sort)" data-en="💡 Bubble Sort">💡 버블 정렬 (Bubble Sort)</h3>
-    <p data-ko="인접한 두 원소를 비교하여 큰 값을 뒤로 보냅니다. 마치 거품이 위로 올라오듯 가장 큰 값이 맨 뒤로 이동합니다." 
-       data-en="Compares adjacent elements and moves larger values backward, like bubbles rising to the surface.">
-       인접한 두 원소를 비교하여 큰 값을 뒤로 보냅니다. 마치 거품이 위로 올라오듯 가장 큰 값이 맨 뒤로 이동합니다.
-    </p>
-    <ul>
-      <li data-ko="⏱️ 시간 복잡도: O(n²)" data-en="⏱️ Time Complexity: O(n²)">⏱️ 시간 복잡도: O(n²)</li>
-      <li data-ko="📦 공간 복잡도: O(1)" data-en="📦 Space Complexity: O(1)">📦 공간 복잡도: O(1)</li>
-      <li data-ko="✅ 안정 정렬" data-en="✅ Stable Sort">✅ 안정 정렬</li>
-    </ul>
-  </div>
-  
-  <div class="array-container" id="arrayContainer"></div>
-  
-  <div class="legend">
-    <span class="legend-item"><span class="legend-box comparing"></span><span data-ko="비교 중" data-en="Comparing">비교 중</span></span>
-    <span class="legend-item"><span class="legend-box swapping"></span><span data-ko="교환 중" data-en="Swapping">교환 중</span></span>
-    <span class="legend-item"><span class="legend-box sorted"></span><span data-ko="정렬 완료" data-en="Sorted">정렬 완료</span></span>
-  </div>
-</section>
+    <div class="links">
+      <button id="themeToggle" class="toggle-btn" type="button">Dark</button>
+      <button id="langToggle" class="toggle-btn" type="button">EN</button>
+      <a href="index.html" class="nav-link" data-ko="메인" data-en="Main">메인</a>
+      <a href="https://github.com/captain34643875-wq" target="_blank" rel="noopener noreferrer" aria-label="GitHub 바로가기">
+        <img src="images/github.png" class="icon" alt="GitHub">
+      </a>
+      <a href="https://naver.me/GeWKLVMd" target="_blank" rel="noopener noreferrer" aria-label="Entry 바로가기">
+        <img src="images/entry.png" class="icon" alt="Entry">
+      </a>
+    </div>
+  </nav>
 
-<!-- Code Editor -->
-<section id="editor">
-  <h2 data-ko="코드 에디터" data-en="Code Editor">코드 에디터</h2>
-  
-  <div class="editor-grid">
-    <div class="editor-panel">
-      <div class="panel-header">
-        <span data-ko="코드 작성" data-en="Write Code">코드 작성</span>
-        <div class="editor-tabs">
-          <button class="editor-tab active" data-lang="html">HTML</button>
-          <button class="editor-tab" data-lang="css">CSS</button>
-          <button class="editor-tab" data-lang="js">JS</button>
+  <main id="content" class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" data-ko="개발 도구 모음" data-en="Development tools">개발 도구 모음</p>
+        <h1 data-ko="연습하면서 바로 써보는 작은 도구들" data-en="Small tools I can practice with right away">
+          연습하면서 바로 써보는 도구들
+        </h1>
+        <p class="hero-text"
+           data-ko="정렬, 정규식, JSON, 색상, 진법, 마크다운, ASCII까지 한 페이지에서 테스트할 수 있도록 정리했습니다."
+           data-en="Everything from sorting to JSON, colors, number bases, markdown, and ASCII lives here in one page.">
+          정렬, 정규식, JSON, 색상, 진법, 마크다운, ASCII까지 한 페이지에서 테스트할 수 있도록 정리했습니다.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#tool-directory" data-ko="도구 보기" data-en="Browse tools">도구 보기</a>
+          <a class="secondary-link" href="#editor" data-ko="에디터로 이동" data-en="Go to editor">에디터로 이동</a>
         </div>
       </div>
-      <div class="editor-body">
-      <textarea class="code-editor active" id="htmlEditor" placeholder="HTML 코드를 입력하세요..."><!DOCTYPE html>
+
+      <aside class="hero-card">
+        <p class="card-kicker" data-ko="빠른 이동" data-en="Quick jump">빠른 이동</p>
+        <ul class="focus-list">
+          <li><a href="#sorting" data-ko="정렬 시각화" data-en="Sorting visualizer">정렬 시각화</a></li>
+          <li><a href="#editor" data-ko="코드 에디터" data-en="Code editor">코드 에디터</a></li>
+          <li><a href="#json" data-ko="JSON 도구" data-en="JSON tools">JSON 도구</a></li>
+          <li><a href="#markdown" data-ko="마크다운 미리보기" data-en="Markdown preview">마크다운 미리보기</a></li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="tool-directory" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="도구 탐색" data-en="Tool directory">도구 탐색</p>
+        <h2 data-ko="필요한 도구로 바로 이동" data-en="Jump straight to the tool you need">필요한 도구로 바로 이동</h2>
+      </div>
+
+      <div class="tool-cards">
+        <a href="#sorting" class="tool-card">
+          <span class="tool-icon">↕</span>
+          <h3 data-ko="정렬 시각화" data-en="Sorting">정렬 시각화</h3>
+          <p data-ko="버블, 선택, 삽입, 퀵 정렬을 애니메이션으로 확인" data-en="Visualize bubble, selection, insertion, and quick sort">버블, 선택, 삽입, 퀵 정렬을 애니메이션으로 확인</p>
+          <span class="tool-arrow">→</span>
+        </a>
+        <a href="#editor" class="tool-card">
+          <span class="tool-icon">⌘</span>
+          <h3 data-ko="코드 에디터" data-en="Code editor">코드 에디터</h3>
+          <p data-ko="HTML, CSS, JS를 써서 바로 미리보기" data-en="Write HTML, CSS, and JS with live preview">HTML, CSS, JS를 써서 바로 미리보기</p>
+          <span class="tool-arrow">→</span>
+        </a>
+        <a href="#regex" class="tool-card">
+          <span class="tool-icon">.*</span>
+          <h3 data-ko="정규식 테스터" data-en="Regex tester">정규식 테스터</h3>
+          <p data-ko="패턴과 문자열을 넣고 매칭 결과 확인" data-en="Test patterns and inspect matches">패턴과 문자열을 넣고 매칭 결과 확인</p>
+          <span class="tool-arrow">→</span>
+        </a>
+        <a href="#json" class="tool-card">
+          <span class="tool-icon">{"}</span>
+          <h3 data-ko="JSON 도구" data-en="JSON tools">JSON 도구</h3>
+          <p data-ko="포맷, 압축, 유효성 검사를 한 번에" data-en="Format, minify, and validate JSON">포맷, 압축, 유효성 검사를 한 번에</p>
+          <span class="tool-arrow">→</span>
+        </a>
+        <a href="#converter" class="tool-card">
+          <span class="tool-icon">2/10</span>
+          <h3 data-ko="진법 변환" data-en="Base converter">진법 변환</h3>
+          <p data-ko="2, 8, 10, 16진수 사이를 변환" data-en="Convert between binary, octal, decimal, and hex">2, 8, 10, 16진수 사이를 변환</p>
+          <span class="tool-arrow">→</span>
+        </a>
+        <a href="#color" class="tool-card">
+          <span class="tool-icon">◼</span>
+          <h3 data-ko="색상 변환" data-en="Color converter">색상 변환</h3>
+          <p data-ko="HEX와 RGB를 오가며 미리보기" data-en="Switch between HEX and RGB with preview">HEX와 RGB를 오가며 미리보기</p>
+          <span class="tool-arrow">→</span>
+        </a>
+        <a href="#markdown" class="tool-card">
+          <span class="tool-icon">MD</span>
+          <h3 data-ko="마크다운" data-en="Markdown">마크다운</h3>
+          <p data-ko="실시간 미리보기로 글쓰기 연습" data-en="Practice writing with live preview">실시간 미리보기로 글쓰기 연습</p>
+          <span class="tool-arrow">→</span>
+        </a>
+        <a href="#ascii" class="tool-card">
+          <span class="tool-icon">AZ</span>
+          <h3 data-ko="ASCII 표" data-en="ASCII table">ASCII 표</h3>
+          <p data-ko="문자 코드 검색과 표 확인" data-en="Search character codes and tables">문자 코드 검색과 표 확인</p>
+          <span class="tool-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="sorting" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="정렬" data-en="Sorting">정렬</p>
+        <h2 data-ko="정렬 알고리즘 시각화" data-en="Sorting algorithm visualizer">정렬 알고리즘 시각화</h2>
+      </div>
+
+      <div class="tool-controls">
+        <select id="algorithm" class="input-field" onchange="updateDescription()">
+          <option value="bubble" data-ko="버블 정렬" data-en="Bubble Sort">버블 정렬</option>
+          <option value="selection" data-ko="선택 정렬" data-en="Selection Sort">선택 정렬</option>
+          <option value="insertion" data-ko="삽입 정렬" data-en="Insertion Sort">삽입 정렬</option>
+          <option value="quick" data-ko="퀵 정렬" data-en="Quick Sort">퀵 정렬</option>
+        </select>
+        <button onclick="generateArray()" class="tool-btn" data-ko="새 배열" data-en="New array">새 배열</button>
+        <button onclick="startSort()" class="tool-btn primary" data-ko="시작" data-en="Start">시작</button>
+        <button onclick="resetArray()" class="tool-btn" data-ko="초기화" data-en="Reset">초기화</button>
+        <div class="speed-control">
+          <label data-ko="속도" data-en="Speed">속도</label>
+          <input type="range" id="speed" min="1" max="100" value="50">
+        </div>
+      </div>
+
+      <div class="algorithm-description" id="algorithmDescription"></div>
+      <div class="array-container" id="arrayContainer"></div>
+      <div class="legend">
+        <span class="legend-item"><span class="legend-box comparing"></span><span data-ko="비교 중" data-en="Comparing">비교 중</span></span>
+        <span class="legend-item"><span class="legend-box swapping"></span><span data-ko="교환 중" data-en="Swapping">교환 중</span></span>
+        <span class="legend-item"><span class="legend-box sorted"></span><span data-ko="정렬 완료" data-en="Sorted">정렬 완료</span></span>
+      </div>
+    </section>
+
+    <section id="editor" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="코드" data-en="Code">코드</p>
+        <h2 data-ko="코드 에디터와 미리보기" data-en="Code editor and live preview">코드 에디터와 미리보기</h2>
+      </div>
+
+      <div class="editor-grid">
+        <div class="editor-panel">
+          <div class="panel-header">
+            <span data-ko="코드 작성" data-en="Write code">코드 작성</span>
+            <div class="editor-tabs">
+              <button class="editor-tab active" data-lang="html" type="button">HTML</button>
+              <button class="editor-tab" data-lang="css" type="button">CSS</button>
+              <button class="editor-tab" data-lang="js" type="button">JS</button>
+            </div>
+          </div>
+          <div class="editor-body">
+            <textarea class="code-editor active" id="htmlEditor"><!DOCTYPE html>
 <html>
 <head>
-    <title>미리보기</title>
+  <title>Live Preview</title>
 </head>
 <body>
-    <h1>안녕하세요!</h1>
-    <p>여기에 HTML을 작성하세요.</p>
+  <h1>Hello, World!</h1>
+  <p>여기에 HTML을 써보세요.</p>
 </body>
 </html></textarea>
-      <textarea class="code-editor" id="cssEditor" placeholder="CSS 코드를 입력하세요..." style="display:none;">body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+            <textarea class="code-editor" id="cssEditor" style="display:none;">body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }</textarea>
-      <textarea class="code-editor" id="jsEditor" placeholder="JavaScript 코드를 입력하세요..." style="display:none;">console.log('Hello, World!');
+            <textarea class="code-editor" id="jsEditor" style="display:none;">console.log('Hello, World!');</textarea>
+          </div>
+        </div>
 
-// 여기에 JavaScript를 작성하세요</textarea>
+        <div class="editor-panel">
+          <div class="panel-header">
+            <span data-ko="미리보기" data-en="Preview">미리보기</span>
+            <button onclick="runCode()" class="tool-btn primary" data-ko="실행 (Ctrl+Enter)" data-en="Run (Ctrl+Enter)">실행 (Ctrl+Enter)</button>
+          </div>
+          <iframe class="preview-frame" id="preview" title="Live preview"></iframe>
+        </div>
       </div>
-    </div>
-    
-    <div class="editor-panel">
-      <div class="panel-header">
-        <span data-ko="미리보기" data-en="Preview">미리보기</span>
-        <button onclick="runCode()" class="tool-btn primary" data-ko="실행 (Ctrl+Enter)" data-en="Run (Ctrl+Enter)">실행 (Ctrl+Enter)</button>
-      </div>
-      <iframe class="preview-frame" id="preview"></iframe>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Regex Tester -->
-<section id="regex">
-  <h2 data-ko="정규표현식 테스터" data-en="Regex Tester">정규표현식 테스터</h2>
-  
-  <div class="input-group">
-    <label data-ko="정규표현식 패턴" data-en="Regex Pattern">정규표현식 패턴</label>
-    <input type="text" id="regexPattern" class="input-field" placeholder="\d{3}-\d{4}" value="\d+">
-  </div>
-  
-  <div class="input-group">
-    <label data-ko="플래그" data-en="Flags">플래그</label>
-    <div class="checkbox-group">
-      <label class="checkbox-label">
-        <input type="checkbox" id="flagG" checked> g <span data-ko="(전역)" data-en="(global)">(전역)</span>
-      </label>
-      <label class="checkbox-label">
-        <input type="checkbox" id="flagI"> i <span data-ko="(대소문자 무시)" data-en="(ignore case)">(대소문자 무시)</span>
-      </label>
-      <label class="checkbox-label">
-        <input type="checkbox" id="flagM"> m <span data-ko="(여러 줄)" data-en="(multiline)">(여러 줄)</span>
-      </label>
-    </div>
-  </div>
-  
-  <div class="input-group">
-    <label data-ko="테스트 문자열" data-en="Test String">테스트 문자열</label>
-    <textarea id="testString" class="input-field" rows="5" placeholder="테스트할 문자열...">전화번호: 010-1234-5678
+    <section id="regex" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="정규식" data-en="Regex">정규식</p>
+        <h2 data-ko="정규식 테스터" data-en="Regex tester">정규식 테스터</h2>
+      </div>
+
+      <div class="input-group">
+        <label data-ko="정규식 패턴" data-en="Regex pattern">정규식 패턴</label>
+        <input type="text" id="regexPattern" class="input-field" placeholder="\\d{3}-\\d{4}" value="\\d+">
+      </div>
+
+      <div class="input-group">
+        <label data-ko="플래그" data-en="Flags">플래그</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" id="flagG" checked> g <span data-ko="전역" data-en="global">전역</span></label>
+          <label class="checkbox-label"><input type="checkbox" id="flagI"> i <span data-ko="대소문자 무시" data-en="ignore case">대소문자 무시</span></label>
+          <label class="checkbox-label"><input type="checkbox" id="flagM"> m <span data-ko="멀티라인" data-en="multiline">멀티라인</span></label>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label data-ko="테스트 문자열" data-en="Test string">테스트 문자열</label>
+        <textarea id="testString" class="input-field" rows="5">전화번호: 010-1234-5678
 이메일: test@example.com
 숫자: 12345</textarea>
-  </div>
-  
-  <button onclick="testRegex()" class="tool-btn primary" data-ko="테스트 실행" data-en="Run Test">테스트 실행</button>
-  
-  <div class="result-box" id="regexMatches">
-    <p class="placeholder" data-ko="매칭 결과가 여기에 표시됩니다..." data-en="Match results will appear here...">매칭 결과가 여기에 표시됩니다...</p>
-  </div>
-</section>
-
-<!-- JSON Formatter -->
-<section id="json">
-  <h2 data-ko="JSON 포맷터 / 검증기" data-en="JSON Formatter / Validator">JSON 포맷터 / 검증기</h2>
-  <div class="json-editor-grid">
-    <div class="input-group">
-      <label data-ko="JSON 입력" data-en="JSON Input">JSON 입력</label>
-      <textarea id="jsonInput" class="input-field" rows="12" placeholder='{"name": "test", "count": 1}'></textarea>
-    </div>
-    <div class="input-group">
-      <label data-ko="결과" data-en="Result">결과</label>
-      <textarea id="jsonOutput" class="input-field" rows="12" placeholder="포맷/검증 결과..." readonly></textarea>
-    </div>
-  </div>
-  <div class="json-buttons">
-    <button onclick="formatJSON()" class="tool-btn primary" data-ko="포맷" data-en="Format">포맷</button>
-    <button onclick="minifyJSON()" class="tool-btn" data-ko="압축" data-en="Minify">압축</button>
-    <button onclick="validateJSON()" class="tool-btn" data-ko="검증" data-en="Validate">검증</button>
-  </div>
-</section>
-
-<!-- Base Converter -->
-<section id="converter">
-  <h2 data-ko="진법 변환기" data-en="Base Converter">진법 변환기</h2>
-  
-  <div class="converter-grid">
-    <div class="base-card">
-      <label class="base-label" data-ko="10진수 (Decimal)" data-en="Decimal">10진수 (Decimal)</label>
-      <input type="text" id="decimal" class="input-field" placeholder="0" oninput="convertFrom(10)">
-    </div>
-    <div class="base-card">
-      <label class="base-label" data-ko="2진수 (Binary)" data-en="Binary">2진수 (Binary)</label>
-      <input type="text" id="binary" class="input-field" placeholder="0" oninput="convertFrom(2)">
-    </div>
-    <div class="base-card">
-      <label class="base-label" data-ko="8진수 (Octal)" data-en="Octal">8진수 (Octal)</label>
-      <input type="text" id="octal" class="input-field" placeholder="0" oninput="convertFrom(8)">
-    </div>
-    <div class="base-card">
-      <label class="base-label" data-ko="16진수 (Hexadecimal)" data-en="Hexadecimal">16진수 (Hexadecimal)</label>
-      <input type="text" id="hexadecimal" class="input-field" placeholder="0" oninput="convertFrom(16)">
-    </div>
-  </div>
-</section>
-
-<!-- Color Converter -->
-<section id="color">
-  <h2 data-ko="색상 변환기" data-en="Color Converter">색상 변환기</h2>
-  <div class="color-converter-grid">
-    <div class="color-card">
-      <label class="base-label" data-ko="HEX" data-en="HEX">HEX</label>
-      <div class="color-input-row">
-        <input type="text" id="colorHex" class="input-field" placeholder="#667eea" value="#667eea" oninput="convertColor('hex')">
-        <input type="color" id="colorPicker" value="#667eea" oninput="convertColor('picker')">
       </div>
-    </div>
-    <div class="color-card">
-      <label class="base-label" data-ko="RGB" data-en="RGB">RGB</label>
-      <input type="text" id="colorRgb" class="input-field" placeholder="rgb(102, 126, 234)" readonly>
-    </div>
-    <div class="color-card">
-      <label class="base-label" data-ko="미리보기" data-en="Preview">미리보기</label>
-      <div id="colorPreview" class="color-preview"></div>
-    </div>
-  </div>
-</section>
 
-<!-- Markdown Preview -->
-<section id="markdown">
-  <h2 data-ko="Markdown 미리보기" data-en="Markdown Preview">Markdown 미리보기</h2>
-  <div class="markdown-grid">
-    <div class="input-group">
-      <label data-ko="Markdown 작성" data-en="Write Markdown">Markdown 작성</label>
-      <textarea id="markdownInput" class="input-field" rows="15" placeholder="# 제목&#10;## 소제목&#10;**굵게** *기울임*&#10;- 목록"># Hello
-## 소제목
+      <button onclick="testRegex()" class="tool-btn primary" data-ko="테스트 실행" data-en="Run test">테스트 실행</button>
+      <div class="result-box" id="regexMatches">
+        <p class="placeholder" data-ko="매칭 결과가 여기에 표시됩니다." data-en="Match results will appear here.">매칭 결과가 여기에 표시됩니다.</p>
+      </div>
+    </section>
+
+    <section id="json" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="JSON" data-en="JSON">JSON</p>
+        <h2 data-ko="JSON 포맷 / 검증" data-en="JSON format and validation">JSON 포맷 / 검증</h2>
+      </div>
+
+      <div class="json-editor-grid">
+        <div class="input-group">
+          <label data-ko="JSON 입력" data-en="JSON input">JSON 입력</label>
+          <textarea id="jsonInput" class="input-field" rows="12" placeholder='{"name": "test", "count": 1}'></textarea>
+        </div>
+        <div class="input-group">
+          <label data-ko="결과" data-en="Result">결과</label>
+          <textarea id="jsonOutput" class="input-field" rows="12" readonly placeholder="포맷 / 검증 결과..."></textarea>
+        </div>
+      </div>
+
+      <div class="json-buttons">
+        <button onclick="formatJSON()" class="tool-btn primary" data-ko="포맷" data-en="Format">포맷</button>
+        <button onclick="minifyJSON()" class="tool-btn" data-ko="압축" data-en="Minify">압축</button>
+        <button onclick="validateJSON()" class="tool-btn" data-ko="검증" data-en="Validate">검증</button>
+      </div>
+    </section>
+
+    <section id="converter" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="진법" data-en="Base">진법</p>
+        <h2 data-ko="진법 변환기" data-en="Base converter">진법 변환기</h2>
+      </div>
+
+      <div class="converter-grid">
+        <div class="base-card">
+          <label class="base-label" data-ko="10진수" data-en="Decimal">10진수</label>
+          <input type="text" id="decimal" class="input-field" placeholder="0" oninput="convertFrom(10)">
+        </div>
+        <div class="base-card">
+          <label class="base-label" data-ko="2진수" data-en="Binary">2진수</label>
+          <input type="text" id="binary" class="input-field" placeholder="0" oninput="convertFrom(2)">
+        </div>
+        <div class="base-card">
+          <label class="base-label" data-ko="8진수" data-en="Octal">8진수</label>
+          <input type="text" id="octal" class="input-field" placeholder="0" oninput="convertFrom(8)">
+        </div>
+        <div class="base-card">
+          <label class="base-label" data-ko="16진수" data-en="Hexadecimal">16진수</label>
+          <input type="text" id="hexadecimal" class="input-field" placeholder="0" oninput="convertFrom(16)">
+        </div>
+      </div>
+    </section>
+
+    <section id="color" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="색상" data-en="Color">색상</p>
+        <h2 data-ko="색상 변환기" data-en="Color converter">색상 변환기</h2>
+      </div>
+
+      <div class="color-converter-grid">
+        <div class="color-card">
+          <label class="base-label" data-ko="HEX" data-en="HEX">HEX</label>
+          <div class="color-input-row">
+            <input type="text" id="colorHex" class="input-field" placeholder="#667eea" value="#667eea" oninput="convertColor('hex')">
+            <input type="color" id="colorPicker" value="#667eea" oninput="convertColor('picker')">
+          </div>
+        </div>
+        <div class="color-card">
+          <label class="base-label" data-ko="RGB" data-en="RGB">RGB</label>
+          <input type="text" id="colorRgb" class="input-field" placeholder="rgb(102, 126, 234)" readonly>
+        </div>
+        <div class="color-card">
+          <label class="base-label" data-ko="미리보기" data-en="Preview">미리보기</label>
+          <div id="colorPreview" class="color-preview"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="markdown" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="마크다운" data-en="Markdown">마크다운</p>
+        <h2 data-ko="마크다운 미리보기" data-en="Markdown preview">마크다운 미리보기</h2>
+      </div>
+
+      <div class="markdown-grid">
+        <div class="input-group">
+          <label data-ko="Markdown 작성" data-en="Write markdown">Markdown 작성</label>
+          <textarea id="markdownInput" class="input-field" rows="15"># Hello
+## 부제목
 **굵게** *기울임*
 
 - 목록 1
 - 목록 2
 
 [링크](https://example.com)</textarea>
-    </div>
-    <div class="input-group">
-      <label data-ko="미리보기" data-en="Preview">미리보기</label>
-      <div id="markdownPreview" class="markdown-preview"></div>
-    </div>
-  </div>
-</section>
+        </div>
+        <div class="input-group">
+          <label data-ko="미리보기" data-en="Preview">미리보기</label>
+          <div id="markdownPreview" class="markdown-preview"></div>
+        </div>
+      </div>
+    </section>
 
-<!-- ASCII Table -->
-<section id="ascii">
-  <h2 data-ko="ASCII / 유니코드 테이블" data-en="ASCII / Unicode Table">ASCII / 유니코드 테이블</h2>
-  
-  <div class="ascii-controls">
-    <input type="text" id="searchChar" class="input-field" placeholder="문자 검색..." oninput="searchASCII()">
-    <select id="charRange" class="input-field" onchange="generateASCIITable()">
-      <option value="basic" data-ko="기본 ASCII (0-127)" data-en="Basic ASCII (0-127)">기본 ASCII (0-127)</option>
-      <option value="extended" data-ko="확장 ASCII (0-255)" data-en="Extended ASCII (0-255)">확장 ASCII (0-255)</option>
-      <option value="korean" data-ko="한글 (가-힣)" data-en="Korean (가-힣)">한글 (가-힣)</option>
-    </select>
-  </div>
-  
-  <div class="ascii-table-wrapper" id="asciiTableContainer"></div>
-</section>
+    <section id="ascii" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="ASCII" data-en="ASCII">ASCII</p>
+        <h2 data-ko="ASCII / 유니코드 표" data-en="ASCII / Unicode table">ASCII / 유니코드 표</h2>
+      </div>
 
-<script src="devtools-script.js"></script>
+      <div class="ascii-controls">
+        <input type="text" id="searchChar" class="input-field" placeholder="문자 검색..." oninput="searchASCII()">
+        <select id="charRange" class="input-field" onchange="generateASCIITable()">
+          <option value="basic" data-ko="기본 ASCII (0-127)" data-en="Basic ASCII (0-127)">기본 ASCII (0-127)</option>
+          <option value="extended" data-ko="확장 ASCII (0-255)" data-en="Extended ASCII (0-255)">확장 ASCII (0-255)</option>
+          <option value="korean" data-ko="한글 (가-힣)" data-en="Korean (ga-han)">한글 (가-힣)</option>
+        </select>
+      </div>
+
+      <div class="ascii-table-wrapper" id="asciiTableContainer"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p data-ko="Captain의 DevTools" data-en="Captain's DevTools">Captain의 DevTools</p>
+    <p>© <span id="year"></span> Captain</p>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" type="button" aria-label="맨 위로 이동">↑</button>
+
+  <script src="devtools-script.js"></script>
 </body>
 </html>
