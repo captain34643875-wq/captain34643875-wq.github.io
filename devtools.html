@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -28,6 +28,7 @@
     <div class="menu">
       <a href="index.html" data-ko="홈" data-en="Home">홈</a>
       <a href="#tool-directory" data-ko="도구" data-en="Tools">도구</a>
+      <a href="#extensions" data-ko="확장" data-en="Extensions">확장</a>
       <a href="#editor" data-ko="에디터" data-en="Editor">에디터</a>
       <a href="#markdown" data-ko="마크다운" data-en="Markdown">마크다운</a>
     </div>
@@ -49,8 +50,9 @@
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow" data-ko="개발 도구 모음" data-en="Development tools">개발 도구 모음</p>
-        <h1 data-ko="연습하면서 바로 써보는 작은 도구들" data-en="Small tools I can practice with right away">
-          연습하면서 바로 써보는 도구들
+        <h1 class="hero-title">
+          <span class="hero-title-line" data-ko="연습하며 써보는" data-en="Practice-ready">연습하며 써보는</span>
+          <span class="hero-title-line" data-ko="작은 도구들" data-en="tools">작은 도구들</span>
         </h1>
         <p class="hero-text"
            data-ko="정렬, 정규식, JSON, 색상, 진법, 마크다운, ASCII까지 한 페이지에서 테스트할 수 있도록 정리했습니다."
@@ -129,6 +131,29 @@
           <p data-ko="문자 코드 검색과 표 확인" data-en="Search character codes and tables">문자 코드 검색과 표 확인</p>
           <span class="tool-arrow">→</span>
         </a>
+      </div>
+    </section>
+
+    <section id="extensions" class="panel">
+      <div class="section-heading">
+        <p class="section-tag" data-ko="확장 프로그램" data-en="Extensions">확장 프로그램</p>
+        <h2 data-ko="브라우저에서 바로 쓰는 도구" data-en="Tools that live in the browser">브라우저에서 바로 쓰는 도구</h2>
+      </div>
+
+      <div class="notice-box">
+        <div class="notice-icon">Ext</div>
+        <div class="notice-content">
+          <strong data-ko="EarthQuakeAlert" data-en="EarthQuakeAlert">EarthQuakeAlert</strong>
+          <p class="notice-text" data-ko="지진 알림을 돕는 브라우저 확장 프로그램입니다." data-en="A browser extension for earthquake alerts.">
+            지진 알림을 돕는 브라우저 확장 프로그램입니다.
+          </p>
+          <a class="text-link"
+             href="https://github.com/captain34643875-wq/EarthQuakeAlert"
+             target="_blank"
+             rel="noopener noreferrer"
+             data-ko="저장소 보기"
+             data-en="View repository">저장소 보기</a>
+        </div>
       </div>
     </section>
 
